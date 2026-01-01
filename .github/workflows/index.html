@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>황금 키워드 리포트</title>
+    <!-- 디자인을 위한 심플한 CSS 프레임워크 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+    <main class="container">
+        <h1>🏆 오늘의 황금 키워드</h1>
+        <p id="update-time">데이터 로딩 중...</p>
+        
+        <figure>
+            <table role="grid">
+                <thead>
+                    <tr>
+                        <th>순위</th>
+                        <th>키워드</th>
+                        <th>황금지수</th>
+                        <th>검색량</th>
+                        <th>블로그 수</th>
+                    </tr>
+                </thead>
+                <tbody id="keyword-list">
+                    <!-- 자바스크립트로 데이터가 들어갈 곳 -->
+                </tbody>
+            </table>
+        </figure>
+    </main>
+
+    <script>
+        // output 폴더의 data.json을 불러옵니다
+        fetch('output/data.json')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.getElementById('keyword-list');
+                const timeLabel = document.getElementById('update-time');
+                
+                // 업데이트 시간 표시 (현재 시간 기준)
+                timeLabel.innerText = "최근 업데이트: " + new Date().toLocaleString();
+
+                data.forEach((item, index) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td><strong>${item.keyword}</strong></td>
+                        <td>${item.golden_score}</td>
+                        <td>${item.search_volume.toLocaleString()}</td>
+                        <td>${item.blog_count.toLocaleString()}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            })
+            .catch(error => {
+                document.getElementById('update-time').innerText = "데이터를 불러오는데 실패했습니다.";
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+requests
+pytrends
+google-search-console-api
+pandas

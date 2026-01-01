@@ -1,0 +1,40 @@
+name: Daily Keyword Scraper
+
+on:
+  schedule:
+    # 매일 한국 시간 오전 6시 (UTC 21:00) 실행
+    - cron: '0 21 * * *'
+  workflow_dispatch: # 수동 실행 버튼 활성화
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 저장소 체크아웃
+      uses: actions/checkout@v3
+
+    - name: 파이썬 설정
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: 라이브러리 설치
+      run: |
+        pip install -r requirements.txt
+
+    - name: 크롤러 실행
+      run: |
+        python main.py
+
+    - name: 결과물 커밋 및 푸시
+      run: |
+        git config --global user.name 'GitHub Action Bot'
+        git config --global user.email 'action@github.com'
+        git add output/data.json
+        # 변경 사항이 있을 때만 커밋
+        git commit -m "🤖 봇: 데이터 자동 업데이트" || exit 0
+        git push
