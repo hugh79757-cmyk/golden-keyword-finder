@@ -1,6 +1,247 @@
 {
-  "generated_at": "2026-01-02T15:41:03.741424+09:00",
-  "seo_summary": "현재 분석된 키워드가 없습니다.",
-  "keyword_review": "",
-  "keywords": []
+  "generated_at": "2026-01-02T16:36:10.230655+09:00",
+  "seo_summary": "2026년 01월 02일 기준, 네이버와 쿠팡의 실시간 트렌드를 분석한 결과 총 24개의 키워드 중 다이아몬드 등급 17개, 블루오션 키워드 21개를 발굴했습니다. 오늘의 1위 황금 키워드는 '에어팟 프로'로, 월간 검색량 311,397건에 경쟁강도 0.02으로 블루오션 시장입니다.",
+  "keyword_review": "💎 다이아몬드 등급 키워드: 에어팟 프로, 나이키 덩크, 아이패드 프로 외 14개\n\n🌟 골드 등급 키워드: 맥북 프로, 전기포트, 침낭 외 1개\n\n🔥 블루오션 키워드(경쟁강도 1.0 미만): 에어팟 프로, 나이키 덩크, 아이패드 프로, 무선청소기, 믹서기\n\n\n📌 추천 전략: 다이아몬드/골드 등급 키워드 중 블루오션인 키워드를 우선적으로 콘텐츠 제작에 활용하시면 검색 노출 효과를 극대화할 수 있습니다.",
+  "keywords": [
+    {
+      "keyword": "에어팟 프로",
+      "source": "NAVER",
+      "search_volume": 311397,
+      "blog_count": 6269,
+      "efficiency": 0.02,
+      "golden_score": 100,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "나이키 덩크",
+      "source": "NAVER",
+      "search_volume": 472876,
+      "blog_count": 25217,
+      "efficiency": 0.05,
+      "golden_score": 100,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "아이패드 프로",
+      "source": "NAVER",
+      "search_volume": 357881,
+      "blog_count": 26016,
+      "efficiency": 0.07,
+      "golden_score": 100,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "무선청소기",
+      "source": "COUPANG",
+      "search_volume": 336879,
+      "blog_count": 18976,
+      "efficiency": 0.06,
+      "golden_score": 100,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "믹서기",
+      "source": "COUPANG",
+      "search_volume": 373800,
+      "blog_count": 13958,
+      "efficiency": 0.04,
+      "golden_score": 100,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "닌텐도 스위치 2",
+      "source": "NAVER",
+      "search_volume": 130314,
+      "blog_count": 50099,
+      "efficiency": 0.38,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "아이폰 16",
+      "source": "NAVER",
+      "search_volume": 398205,
+      "blog_count": 71900,
+      "efficiency": 0.18,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "갤럭시 S25",
+      "source": "NAVER",
+      "search_volume": 499018,
+      "blog_count": 70101,
+      "efficiency": 0.14,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "플레이스테이션 5",
+      "source": "NAVER",
+      "search_volume": 462654,
+      "blog_count": 96771,
+      "efficiency": 0.21,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "샤넬 가방",
+      "source": "NAVER",
+      "search_volume": 136909,
+      "blog_count": 29109,
+      "efficiency": 0.21,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "애플워치",
+      "source": "NAVER",
+      "search_volume": 100029,
+      "blog_count": 44466,
+      "efficiency": 0.44,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "로봇청소기",
+      "source": "COUPANG",
+      "search_volume": 477352,
+      "blog_count": 95341,
+      "efficiency": 0.2,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "공기청정기",
+      "source": "COUPANG",
+      "search_volume": 146723,
+      "blog_count": 23672,
+      "efficiency": 0.16,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "에어프라이어",
+      "source": "COUPANG",
+      "search_volume": 260238,
+      "blog_count": 56111,
+      "efficiency": 0.22,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "캠핑의자",
+      "source": "COUPANG",
+      "search_volume": 206505,
+      "blog_count": 65471,
+      "efficiency": 0.32,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "텐트",
+      "source": "COUPANG",
+      "search_volume": 211571,
+      "blog_count": 45073,
+      "efficiency": 0.21,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "런닝화",
+      "source": "COUPANG",
+      "search_volume": 171762,
+      "blog_count": 65698,
+      "efficiency": 0.38,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "맥북 프로",
+      "source": "NAVER",
+      "search_volume": 62335,
+      "blog_count": 30262,
+      "efficiency": 0.49,
+      "golden_score": 75,
+      "grade": "🌟 GOLD",
+      "related_keywords": []
+    },
+    {
+      "keyword": "전기포트",
+      "source": "COUPANG",
+      "search_volume": 59146,
+      "blog_count": 25704,
+      "efficiency": 0.43,
+      "golden_score": 75,
+      "grade": "🌟 GOLD",
+      "related_keywords": []
+    },
+    {
+      "keyword": "침낭",
+      "source": "COUPANG",
+      "search_volume": 80972,
+      "blog_count": 29921,
+      "efficiency": 0.37,
+      "golden_score": 75,
+      "grade": "🌟 GOLD",
+      "related_keywords": []
+    },
+    {
+      "keyword": "등산화",
+      "source": "COUPANG",
+      "search_volume": 112720,
+      "blog_count": 56922,
+      "efficiency": 0.5,
+      "golden_score": 60,
+      "grade": "🌟 GOLD",
+      "related_keywords": []
+    },
+    {
+      "keyword": "다이슨 에어랩",
+      "source": "NAVER",
+      "search_volume": 18096,
+      "blog_count": 28657,
+      "efficiency": 1.58,
+      "golden_score": 30,
+      "grade": "Bad",
+      "related_keywords": []
+    },
+    {
+      "keyword": "운동화",
+      "source": "COUPANG",
+      "search_volume": 20029,
+      "blog_count": 23237,
+      "efficiency": 1.16,
+      "golden_score": 30,
+      "grade": "Bad",
+      "related_keywords": []
+    },
+    {
+      "keyword": "뉴발란스 530",
+      "source": "NAVER",
+      "search_volume": 13449,
+      "blog_count": 70573,
+      "efficiency": 5.25,
+      "golden_score": 10,
+      "grade": "Bad",
+      "related_keywords": []
+    }
+  ]
 }
