@@ -43,7 +43,7 @@ jobs:
       run: |
         python main.py
 
-    - name: 결과물 커밋 및 푸시
+        - name: 결과물 커밋 및 푸시
       run: |
         git config --global user.name 'GitHub Action Bot'
         git config --global user.email 'action@github.com'
@@ -52,8 +52,8 @@ jobs:
         git add output/data.json
         git commit -m "🤖 봇: 데이터 자동 업데이트" || exit 0
         
-        # 2. 최신 코드 받아오기 (충돌 방지)
-        git pull origin main --rebase
+        # 2. 최신 코드 받아오기 (충돌 나면 봇의 파일(theirs)을 우선 사용)
+        git pull origin main --rebase -X theirs
         
         # 3. 밀어넣기
-        git push
+        git push origin main
