@@ -39,9 +39,9 @@ def generate_ad_signature(timestamp, method, uri):
 # 3. 데이터 수집
 # -------------------------------------------------------------------------
 def get_naver_ad_stats(keyword):
-    """ 광고 API: 검색량/CPC 조회 (디버깅 로그 추가) """
-    if not NAVER_AD_ACCESS_KEY or not NAVER_AD_SECRET_KEY:
-        print("⚠️ 광고 API 키 없음")
+    """ 광고 API: 검색량/CPC 조회 (강력한 디버깅 모드) """
+    if not NAVER_AD_ACCESS_KEY or not NAVER_AD_SECRET_KEY or not NAVER_AD_CUSTOMER_ID:
+        print(f"⚠️ [API설정오류] 광고 API 키가 누락되었습니다. ID: {NAVER_AD_CUSTOMER_ID}")
         return 0, 0
     
     uri = "/keywordstool"
@@ -51,38 +51,42 @@ def get_naver_ad_stats(keyword):
     headers = {
         "X-Timestamp": timestamp,
         "X-API-KEY": NAVER_AD_ACCESS_KEY,
-        "X-Customer": NAVER_AD_CUSTOMER_ID,
+        "X-Customer": str(NAVER_AD_CUSTOMER_ID), # 문자로 변환해서 전송
         "X-Signature": generate_ad_signature(timestamp, method, uri)
     }
     
     try:
-        # 공백 제거 등 키워드 정제
         clean_kw = keyword.replace(" ", "")
         time.sleep(0.1)
         
-        # hintKeywords 파라미터 사용
+        # API 호출
         res = requests.get(f"https://api.naver.com{uri}", params={"hintKeywords": clean_kw, "showDetail": 1}, headers=headers)
         
+        # [중요] 성공이든 실패든 응답 코드를 확인
         if res.status_code == 200:
             data_list = res.json().get('keywordList', [])
             if data_list:
-                # 결과 중 키워드가 가장 유사한 것 찾기 (첫번째 것 사용)
                 item = data_list[0]
                 vol_pc = item.get('monthlyPcQcCnt', 0)
                 vol_mo = item.get('monthlyMobileQcCnt', 0)
-                
-                # < 10 문자열 처리
                 if str(vol_pc).startswith('<'): vol_pc = 0
                 if str(vol_mo).startswith('<'): vol_mo = 0
                 
-                return (int(vol_pc) + int(vol_mo)), int(item.get('avgBidAmt', 0))
+                total = int(vol_pc) + int(vol_mo)
+                cpc = int(item.get('avgBidAmt', 0))
+                print(f"✅ [성공] {keyword} -> 검색량: {total}, CPC: {cpc}")
+                return total, cpc
+            else:
+                print(f"⚠️ [데이터없음] {keyword}에 대한 결과가 비어있습니다.")
         else:
-            print(f"광고 API 호출 실패({res.status_code}): {res.text}")
+            # [핵심] 실패 원인을 로그에 찍음
+            print(f"❌ [API실패] {keyword} 코드: {res.status_code}, 메시지: {res.text}")
 
     except Exception as e:
-        print(f"광고 API 에러: {e}")
+        print(f"❌ [시스템에러] {e}")
         
     return 0, 0
+
 
 def get_blog_count(keyword):
     if not NAVER_CLIENT_ID: return 1
