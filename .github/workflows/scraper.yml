@@ -34,17 +34,21 @@ jobs:
       run: |
         python main.py
 
-    - name: 결과물 커밋 및 푸시
+        - name: 결과물 커밋 및 푸시
       run: |
         git config --global user.name 'GitHub Action Bot'
         git config --global user.email 'action@github.com'
         
-        # 1. 봇이 만든 파일 커밋
+        # [핵심] 현재 위치를 main 브랜치로 명확하게 고정합니다.
+        git checkout main
+        
+        # [핵심] 최신 변경사항을 먼저 당겨옵니다.
+        git pull origin main
+        
+        # 데이터 파일 추가 및 커밋
         git add output/data.json
         git commit -m "🤖 봇: 데이터 자동 업데이트" || exit 0
         
-        # 2. 최신 코드 받아오기 (기록이 있어서 이제 성공함)
-        git pull origin main --rebase
-        
-        # 3. 밀어넣기
-        git push
+        # 최종 푸시
+        git push origin main
+
