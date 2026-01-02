@@ -40,15 +40,16 @@ jobs:
       run: |
         python main.py
 
-    - name: 결과물 강제 푸시
+    - name: 결과물 커밋 및 푸시
       run: |
         git config --global user.name 'GitHub Action Bot'
         git config --global user.email 'action@github.com'
         
-        # 1. 봇이 만든 파일 스테이징 및 커밋
-        git add output/data.json
-        git commit -m "🤖 봇: 데이터 자동 업데이트" || exit 0
+        # output 폴더 전체 추가 (data.json + archive_list.json + archives/)
+        git add output/
         
-        # 2. [핵심] 다른 거 묻지도 따지지도 않고 강제로 덮어씌우기
-        # pull, rebase 이런 거 안 합니다. 무조건 밀어버립니다.
-        git push -f origin main
+        # 변경사항 있을 때만 커밋
+        git diff --staged --quiet || git commit -m "🤖 봇: 데이터 및 아카이브 자동 업데이트 $(date +'%Y-%m-%d %H:%M KST')"
+        
+        # 푸시
+        git push origin main
