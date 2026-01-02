@@ -1,9 +1,9 @@
-undefinedname: Daily Keyword Scraper
+name: Daily Keyword Scraper
 
 on:
   schedule:
-    - cron: '0 21 * * *' # 매일 한국시간 오전 6시
-  workflow_dispatch: # 수동 실행 버튼
+    - cron: '0 21 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,7 +16,7 @@ jobs:
     - name: 저장소 체크아웃
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0 # 과거 기록까지 가져오기
+        fetch-depth: 0
 
     - name: 파이썬 설정
       uses: actions/setup-python@v4
@@ -29,28 +29,25 @@ jobs:
 
     - name: 크롤러 실행
       env:
-        # 네이버 키
         NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
         NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
-        # 쿠팡 키
         COUPANG_ACCESS_KEY: ${{ secrets.COUPANG_ACCESS_KEY }}
         COUPANG_SECRET_KEY: ${{ secrets.COUPANG_SECRET_KEY }}
-        # 네이버 광고 API 키
         NAVER_AD_CUSTOMER_ID: ${{ secrets.NAVER_AD_CUSTOMER_ID }}
         NAVER_AD_ACCESS_KEY: ${{ secrets.NAVER_AD_ACCESS_KEY }}
         NAVER_AD_SECRET_KEY: ${{ secrets.NAVER_AD_SECRET_KEY }}
       run: |
         python main.py
 
-        - name: 결과물 커밋 및 푸시
+    - name: 결과물 강제 푸시
       run: |
         git config --global user.name 'GitHub Action Bot'
         git config --global user.email 'action@github.com'
         
-        # 1. 봇이 만든 파일 커밋
+        # 1. 봇이 만든 파일 스테이징 및 커밋
         git add output/data.json
         git commit -m "🤖 봇: 데이터 자동 업데이트" || exit 0
         
-        # 2. [필살기] 복잡한 병합 과정 없이 강제로 덮어씌우기
-        # (데이터 파일은 과거 기록보다 최신 상태가 중요하므로 안전함)
+        # 2. [핵심] 다른 거 묻지도 따지지도 않고 강제로 덮어씌우기
+        # pull, rebase 이런 거 안 합니다. 무조건 밀어버립니다.
         git push -f origin main
