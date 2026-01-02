@@ -1,152 +1,242 @@
 [
   {
+    "keyword": "닌텐도 스위치 2",
     "source": "NAVER",
-    "rank": 3,
-    "keyword": "닌텐도 스위치",
-    "golden_score": 50.0,
-    "grade": "🌟 GOLD",
-    "search_volume": 153100,
-    "cpc": 0,
-    "blog_count": 429412
+    "rank": "3위",
+    "golden_score": 70,
+    "grade": "💎 DIAMOND",
+    "search_volume": 342900,
+    "blog_count": 37918,
+    "efficiency": 0.11
   },
   {
+    "keyword": "닌텐도 스위치 2인용 게임",
     "source": "NAVER",
-    "rank": 6,
-    "keyword": "엡피 다이어리",
-    "golden_score": 32.3,
-    "grade": "✨ SILVER",
-    "search_volume": 230,
-    "cpc": 0,
-    "blog_count": 6
+    "rank": "연관",
+    "golden_score": 62.6,
+    "grade": "💎 DIAMOND",
+    "search_volume": 1880,
+    "blog_count": 1159,
+    "efficiency": 0.62
   },
   {
+    "keyword": "크리넥스 데코앤소프트",
     "source": "COUPANG",
-    "rank": 4,
-    "keyword": "까사니 인덕션",
+    "rank": "연관",
+    "golden_score": 60.7,
+    "grade": "💎 DIAMOND",
+    "search_volume": 3820,
+    "blog_count": 3905,
+    "efficiency": 1.02
+  },
+  {
+    "keyword": "스테나 stn100 stn100a 차이",
+    "source": "NAVER",
+    "rank": "연관",
     "golden_score": 20.1,
-    "grade": "Normal",
+    "grade": "✨ SILVER",
+    "search_volume": 20,
+    "blog_count": 269,
+    "efficiency": 13.45
+  },
+  {
+    "keyword": "까사니 인덕션 쿠치나",
+    "source": "COUPANG",
+    "rank": "4위",
+    "golden_score": 20.1,
+    "grade": "✨ SILVER",
     "search_volume": 10,
-    "cpc": 0,
-    "blog_count": 1339
+    "blog_count": 509,
+    "efficiency": 50.9
   },
   {
-    "source": "COUPANG",
-    "rank": 3,
-    "keyword": "테팔 인덕션",
-    "golden_score": 15.1,
-    "grade": "Normal",
-    "search_volume": 1510,
-    "cpc": 0,
-    "blog_count": 22094
-  },
-  {
+    "keyword": "닌텐도 스위치 2 화면 안켜짐",
     "source": "NAVER",
-    "rank": 4,
-    "keyword": "생폰 맥세이프",
-    "golden_score": 14.0,
-    "grade": "Normal",
-    "search_volume": 400,
-    "cpc": 0,
-    "blog_count": 5310
+    "rank": "연관",
+    "golden_score": 19.9,
+    "grade": "💩 BAD",
+    "search_volume": 810,
+    "blog_count": 2706,
+    "efficiency": 3.34
   },
   {
+    "keyword": "테팔 인덕션 티타늄 1X",
     "source": "COUPANG",
-    "rank": 1,
-    "keyword": "크리넥스 데코",
-    "golden_score": 11.6,
-    "grade": "Normal",
-    "search_volume": 160,
-    "cpc": 0,
-    "blog_count": 8461
+    "rank": "연관",
+    "golden_score": 17.8,
+    "grade": "💩 BAD",
+    "search_volume": 460,
+    "blog_count": 2612,
+    "efficiency": 5.68
   },
   {
+    "keyword": "풀커버 범퍼 충격보호",
     "source": "NAVER",
-    "rank": 2,
-    "keyword": "풀커버 범퍼",
-    "golden_score": 10.6,
-    "grade": "Normal",
+    "rank": "2위",
+    "golden_score": 17.5,
+    "grade": "💩 BAD",
+    "search_volume": 410,
+    "blog_count": 3667,
+    "efficiency": 8.94
+  },
+  {
+    "keyword": "크리넥스 데코앤소프트 24롤",
+    "source": "COUPANG",
+    "rank": "연관",
+    "golden_score": 16.4,
+    "grade": "💩 BAD",
+    "search_volume": 230,
+    "blog_count": 4960,
+    "efficiency": 21.57
+  },
+  {
+    "keyword": "생폰 맥세이프 슬림",
+    "source": "NAVER",
+    "rank": "4위",
+    "golden_score": 15.8,
+    "grade": "💩 BAD",
+    "search_volume": 140,
+    "blog_count": 1534,
+    "efficiency": 10.96
+  },
+  {
+    "keyword": "스테나 STN 100",
+    "source": "NAVER",
+    "rank": "5위",
+    "golden_score": 15.8,
+    "grade": "💩 BAD",
+    "search_volume": 130,
+    "blog_count": 2114,
+    "efficiency": 16.26
+  },
+  {
+    "keyword": "테팔 인덕션 티타늄 후라이팬",
+    "source": "COUPANG",
+    "rank": "연관",
+    "golden_score": 15.4,
+    "grade": "💩 BAD",
     "search_volume": 60,
-    "cpc": 0,
-    "blog_count": 8395
+    "blog_count": 3661,
+    "efficiency": 61.02
   },
   {
-    "source": "NAVER",
-    "rank": 7,
-    "keyword": "삼성전자 갤럭시탭",
-    "golden_score": 5.1,
-    "grade": "Normal",
-    "search_volume": 510,
-    "cpc": 0,
-    "blog_count": 96869
-  },
-  {
-    "source": "NAVER",
-    "rank": 8,
-    "keyword": "삼성전자 갤럭시탭",
-    "golden_score": 5.1,
-    "grade": "Normal",
-    "search_volume": 510,
-    "cpc": 0,
-    "blog_count": 96869
-  },
-  {
-    "source": "NAVER",
-    "rank": 10,
-    "keyword": "Apple 아이패드",
-    "golden_score": 0.3,
-    "grade": "Normal",
-    "search_volume": 30,
-    "cpc": 0,
-    "blog_count": 123032
-  },
-  {
-    "source": "NAVER",
-    "rank": 1,
-    "keyword": "엠비에프 HDMI",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 957
-  },
-  {
-    "source": "NAVER",
-    "rank": 5,
-    "keyword": "스테나 STN",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 2164
-  },
-  {
-    "source": "NAVER",
-    "rank": 9,
-    "keyword": "방탄 범퍼",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 9126
-  },
-  {
+    "keyword": "크리넥스 데코 앤",
     "source": "COUPANG",
-    "rank": 2,
-    "keyword": "보몽드 마이크로화이버",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 54
+    "rank": "1위",
+    "golden_score": 15.1,
+    "grade": "💩 BAD",
+    "search_volume": 20,
+    "blog_count": 4129,
+    "efficiency": 206.45
   },
   {
+    "keyword": "테팔 인덕션 티타늄",
     "source": "COUPANG",
-    "rank": 5,
-    "keyword": "HanilMedical 황토",
+    "rank": "3위",
+    "golden_score": 7.5,
+    "grade": "💩 BAD",
+    "search_volume": 410,
+    "blog_count": 8011,
+    "efficiency": 19.54
+  },
+  {
+    "keyword": "크리넥스 데코앤소프트 30롤",
+    "source": "COUPANG",
+    "rank": "연관",
+    "golden_score": 6.6,
+    "grade": "💩 BAD",
+    "search_volume": 270,
+    "blog_count": 5813,
+    "efficiency": 21.53
+  },
+  {
+    "keyword": "풀커버 범퍼 충격보호 하이브리드",
+    "source": "NAVER",
+    "rank": "연관",
+    "golden_score": 3.7,
+    "grade": "💩 BAD",
+    "search_volume": 620,
+    "blog_count": 10010,
+    "efficiency": 16.15
+  },
+  {
+    "keyword": "생폰 맥세이프 슬림 케이스 투명",
+    "source": "NAVER",
+    "rank": "연관",
+    "golden_score": 3.1,
+    "grade": "💩 BAD",
+    "search_volume": 510,
+    "blog_count": 12930,
+    "efficiency": 25.35
+  },
+  {
+    "keyword": "생폰 맥세이프 슬림 케이스",
+    "source": "NAVER",
+    "rank": "연관",
+    "golden_score": 2.5,
+    "grade": "💩 BAD",
+    "search_volume": 410,
+    "blog_count": 27520,
+    "efficiency": 67.12
+  },
+  {
+    "keyword": "엠비에프 HDMI V2.0",
+    "source": "NAVER",
+    "rank": "1위",
     "golden_score": 0,
-    "grade": "Normal",
+    "grade": "💩 BAD",
     "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 601
+    "blog_count": 48,
+    "efficiency": 999.99
+  },
+  {
+    "keyword": "풀커버 범퍼 충격보호 맥세이프",
+    "source": "NAVER",
+    "rank": "연관",
+    "golden_score": 0,
+    "grade": "💩 BAD",
+    "search_volume": 0,
+    "blog_count": 10311,
+    "efficiency": 999.99
+  },
+  {
+    "keyword": "스테나 stn100a 차이",
+    "source": "NAVER",
+    "rank": "연관",
+    "golden_score": 0,
+    "grade": "💩 BAD",
+    "search_volume": 0,
+    "blog_count": 18,
+    "efficiency": 999.99
+  },
+  {
+    "keyword": "스테나 stn100 청소방법",
+    "source": "NAVER",
+    "rank": "연관",
+    "golden_score": 0,
+    "grade": "💩 BAD",
+    "search_volume": 0,
+    "blog_count": 10,
+    "efficiency": 999.99
+  },
+  {
+    "keyword": "보몽드 뉴쏘울 극세사",
+    "source": "COUPANG",
+    "rank": "2위",
+    "golden_score": 0,
+    "grade": "💩 BAD",
+    "search_volume": 0,
+    "blog_count": 122,
+    "efficiency": 999.99
+  },
+  {
+    "keyword": "HanilMedical 황토 탄소순환",
+    "source": "COUPANG",
+    "rank": "5위",
+    "golden_score": 0,
+    "grade": "💩 BAD",
+    "search_volume": 0,
+    "blog_count": 640,
+    "efficiency": 999.99
   }
 ]
