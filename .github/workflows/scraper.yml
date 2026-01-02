@@ -27,18 +27,16 @@ jobs:
         pip install -r requirements.txt
 
     - name: 크롤러 실행
-      env:
-        NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
-        NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
       run: |
         python main.py
 
-
-    - name: 결과물 커밋 및 푸시
+        - name: 결과물 커밋 및 푸시
       run: |
         git config --global user.name 'GitHub Action Bot'
         git config --global user.email 'action@github.com'
+        git pull origin main --rebase  # <--- [핵심] 최신 코드를 먼저 당겨옴
         git add output/data.json
         # 변경 사항이 있을 때만 커밋
         git commit -m "🤖 봇: 데이터 자동 업데이트" || exit 0
         git push
+
