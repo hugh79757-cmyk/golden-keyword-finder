@@ -16,7 +16,7 @@ jobs:
     - name: 저장소 체크아웃
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0 # 과거 기록까지 가져오기 (필수)
+        fetch-depth: 0 # 과거 기록까지 가져오기
 
     - name: 파이썬 설정
       uses: actions/setup-python@v4
@@ -29,30 +29,29 @@ jobs:
 
     - name: 크롤러 실행
       env:
-        # (기존 키들...)
+        # 네이버 키
         NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
         NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+        # 쿠팡 키
         COUPANG_ACCESS_KEY: ${{ secrets.COUPANG_ACCESS_KEY }}
         COUPANG_SECRET_KEY: ${{ secrets.COUPANG_SECRET_KEY }}
-        
-        # [NEW] 네이버 광고 API 키 (필수)
+        # 네이버 광고 API 키
         NAVER_AD_CUSTOMER_ID: ${{ secrets.NAVER_AD_CUSTOMER_ID }}
         NAVER_AD_ACCESS_KEY: ${{ secrets.NAVER_AD_ACCESS_KEY }}
         NAVER_AD_SECRET_KEY: ${{ secrets.NAVER_AD_SECRET_KEY }}
-
       run: |
         python main.py
 
-        - name: 결과물 커밋 및 푸시
+    - name: 결과물 커밋 및 푸시
       run: |
         git config --global user.name 'GitHub Action Bot'
         git config --global user.email 'action@github.com'
         
-        # 1. 봇이 만든 파일 커밋
+        # 1. 봇이 만든 파일 스테이징 및 커밋
         git add output/data.json
         git commit -m "🤖 봇: 데이터 자동 업데이트" || exit 0
         
-        # 2. 최신 코드 받아오기 (충돌 나면 봇의 파일(theirs)을 우선 사용)
+        # 2. 최신 코드 받아오기 (충돌 시 봇의 파일 우선 사용)
         git pull origin main --rebase -X theirs
         
         # 3. 밀어넣기
