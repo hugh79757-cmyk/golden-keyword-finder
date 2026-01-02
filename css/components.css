@@ -182,3 +182,38 @@
 }
 
 .ad-label { color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+
+/* 키워드 총평 섹션 */
+.review-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    margin: 28px 0;
+}
+
+.review-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.review-section h3 svg {
+    width: 20px;
+    height: 20px;
+    color: var(--diamond-light);
+}
+
+.review-content {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.9;
+    white-space: pre-line;
+}
+
+.review-content strong {
+    color: var(--text-primary);
+}

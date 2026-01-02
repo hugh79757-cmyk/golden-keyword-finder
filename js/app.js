@@ -1,20 +1,11 @@
-function generateHeroContent(topItem, totalCount, diamondCount, blueOceanCount) {
-    const dateStr = formatDate();
-    const kw = topItem.keyword;
-    const vol = formatNumber(topItem.search_volume);
-    const eff = topItem.efficiency;
-    
-    let status = '블루오션', statusClass = 'eff-good';
-    if (eff > 5.0) { status = '레드오션'; statusClass = 'eff-bad'; }
-    else if (eff > 1.0) { status = '보통'; statusClass = ''; }
-
-    return `<strong>${dateStr}</strong> 기준, 총 <strong>${totalCount}개</strong> 키워드 분석<br><br>1위 황금 키워드: <span class="keyword-highlight">'${kw}'</span><br>검색량 <strong>${vol}건</strong> · 경쟁강도 <strong class="${statusClass}">${eff}</strong> (${status})<br><br>다이아몬드 <strong>${diamondCount}개</strong> · 블루오션 <strong>${blueOceanCount}개</strong>`;
+function generateHeroContent(summary) {
+    // SEO 요약을 그대로 사용 (문장형)
+    return summary.replace(/\n/g, '<br>');
 }
 
 function createTableRow(item) {
     let badgeClass = 'badge-naver', badgeIcon = 'shopping-bag';
     if (item.source === 'COUPANG') { badgeClass = 'badge-coupang'; badgeIcon = 'shopping-cart'; }
-    else if (item.rank === '연관') { badgeClass = 'badge-related'; badgeIcon = 'link'; }
     
     let gradeClass = 'grade-bad', gradeIcon = '';
     if (item.grade.includes('DIAMOND')) { gradeClass = 'grade-diamond'; gradeIcon = '<i data-lucide="gem"></i>'; }
@@ -29,9 +20,9 @@ function createTableRow(item) {
     const escapedKw = item.keyword.replace(/'/g, "\\'");
     const naverUrl = `https://search.naver.com/search.naver?query=${encodeURIComponent(item.keyword)}`;
 
+    // 순위 컬럼 제거됨
     return `<tr>
         <td data-label="출처"><span class="badge ${badgeClass}"><i data-lucide="${badgeIcon}"></i>${item.source}</span></td>
-        <td data-label="순위">${item.rank}</td>
         <td data-label="키워드"><div class="keyword-cell"><div class="keyword-info"><div class="keyword-name">${item.keyword}</div><div class="keyword-grade"><span class="grade ${gradeClass}">${gradeIcon} ${item.grade}</span></div></div><div class="action-btns"><button class="action-btn copy" onclick="copyKeyword('${escapedKw}', this)"><i data-lucide="copy"></i> 복사</button><a class="action-btn analyze" href="${naverUrl}" target="_blank"><i data-lucide="search"></i> 분석</a></div></div></td>
         <td data-label="황금지수" class="num-col"><span class="grade ${gradeClass}">${gradeIcon} ${item.golden_score}점</span></td>
         <td data-label="경쟁강도" class="num-col"><span class="efficiency ${effClass}">${effIcon} ${comp}</span></td>
@@ -43,7 +34,12 @@ function createTableRow(item) {
 async function loadData() {
     try {
         const response = await fetch(CONFIG.api.data);
-        const data = await response.json();
+        const jsonData = await response.json();
+        
+        // 새로운 데이터 구조 처리
+        const data = jsonData.keywords || jsonData;  // 호환성 유지
+        const seoSummary = jsonData.seo_summary || '';
+        const keywordReview = jsonData.keyword_review || '';
         
         document.getElementById('update-time').innerHTML = `<i data-lucide="clock"></i><span>${formatDateTime()}</span>`;
         
@@ -56,16 +52,48 @@ async function loadData() {
         document.getElementById('stat-blueocean').textContent = blueOceanCount;
         document.getElementById('stat-sources').textContent = sources;
         
-        if (data.length > 0) {
-            document.getElementById('hero-content').innerHTML = generateHeroContent(data[0], data.length, diamondCount, blueOceanCount);
+        // SEO 문장형 요약 표시
+        if (seoSummary) {
+            document.getElementById('hero-content').innerHTML = generateHeroContent(seoSummary);
             document.getElementById('hero-section').style.display = 'block';
         }
         
+        // 테이블 렌더링
         document.getElementById('keyword-list').innerHTML = data.map(createTableRow).join('');
+        
+        // 키워드 총평 표시
+        if (keywordReview) {
+            renderKeywordReview(keywordReview);
+        }
+        
         lucide.createIcons();
     } catch (err) {
-        document.getElementById('keyword-list').innerHTML = '<tr><td colspan="7" class="loading-cell" style="color:var(--danger);">데이터를 불러올 수 없습니다</td></tr>';
+        console.error('데이터 로드 실패:', err);
+        document.getElementById('keyword-list').innerHTML = '<tr><td colspan="6" class="loading-cell" style="color:var(--danger);">데이터를 불러올 수 없습니다</td></tr>';
     }
+}
+
+function renderKeywordReview(review) {
+    // 기존 총평 섹션이 있으면 제거
+    const existing = document.getElementById('keyword-review-section');
+    if (existing) existing.remove();
+    
+    // 새 총평 섹션 생성
+    const section = document.createElement('section');
+    section.id = 'keyword-review-section';
+    section.className = 'review-section';
+    section.innerHTML = `
+        <h3><i data-lucide="clipboard-list"></i> 키워드 총평</h3>
+        <div class="review-content">${review.replace(/\n/g, '<br>')}</div>
+    `;
+    
+    // 아카이브 섹션 앞에 삽입
+    const archiveSection = document.querySelector('.archive-section');
+    if (archiveSection) {
+        archiveSection.parentNode.insertBefore(section, archiveSection);
+    }
+    
+    lucide.createIcons();
 }
 
 async function loadArchive() {
@@ -75,7 +103,8 @@ async function loadArchive() {
         
         document.getElementById('archive-list').innerHTML = files.slice(0, CONFIG.archiveLimit).map(file => {
             const name = file.replace('.html', '').replace('_', '일 ').replace('h', '시');
-            return `<li class="archive-item"><a href="${CONFIG.api.archivePath}${file}"><i data-lucide="file-text"></i>${name}</a></li>`;
+            // 경로 수정: output/archives/
+            return `<li class="archive-item"><a href="output/archives/${file}"><i data-lucide="file-text"></i>${name}</a></li>`;
         }).join('');
         
         lucide.createIcons();
