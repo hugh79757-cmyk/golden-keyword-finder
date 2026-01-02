@@ -1,8 +1,32 @@
 [
   {
-    "keyword": "데이터 수집 실패",
-    "golden_score": 0,
-    "search_volume": 0,
+    "keyword": "크리넥스 데코",
+    "golden_score": "🌟 GOLD",
+    "search_volume": "Best 1 (CP)",
+    "blog_count": 0
+  },
+  {
+    "keyword": "보몽드 마이크로화이버",
+    "golden_score": "🌟 GOLD",
+    "search_volume": "Best 2 (CP)",
+    "blog_count": 0
+  },
+  {
+    "keyword": "테팔 인덕션",
+    "golden_score": "🌟 GOLD",
+    "search_volume": "Best 3 (CP)",
+    "blog_count": 0
+  },
+  {
+    "keyword": "까사니 인덕션",
+    "golden_score": "🌟 GOLD",
+    "search_volume": "Best 4 (CP)",
+    "blog_count": 0
+  },
+  {
+    "keyword": "HanilMedical 황토",
+    "golden_score": "🌟 GOLD",
+    "search_volume": "Best 5 (CP)",
     "blog_count": 0
   }
 ]
