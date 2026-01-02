@@ -1,55 +1,65 @@
-// js/app.js - 메인 앱 로직
+// js/app.js - 메인 앱 로직 (에러 방지 강화)
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('앱 초기화 시작...');
-    loadData();
-    loadArchiveList();
+    console.log('=== 앱 시작 ===');
+    
+    try {
+        loadData();
+        loadArchiveList();
+    } catch (e) {
+        console.error('초기화 오류:', e);
+    }
 });
 
 // 데이터 로드
 function loadData() {
     var apiUrl = 'output/data.json';
-    if (typeof CONFIG !== 'undefined' && CONFIG.api) {
-        apiUrl = CONFIG.api.data || apiUrl;
-    }
     
-    console.log('데이터 로드 시도:', apiUrl);
+    console.log('데이터 로드:', apiUrl);
     
     fetch(apiUrl)
         .then(function(response) {
-            console.log('데이터 응답 상태:', response.status);
+            console.log('응답 상태:', response.status);
             if (!response.ok) {
-                throw new Error('데이터를 불러올 수 없습니다 (상태: ' + response.status + ')');
+                throw new Error('HTTP ' + response.status);
             }
             return response.json();
         })
         .then(function(data) {
-            console.log('데이터 로드 성공:', data);
-            renderDashboard(data);
+            console.log('데이터 수신 완료');
             
-            // 광고 초기화
-            if (typeof AdsManager !== 'undefined') {
-                AdsManager.initAllAds();
+            if (!data || !data.keywords) {
+                throw new Error('데이터 형식 오류');
             }
+            
+            renderDashboard(data);
         })
         .catch(function(error) {
-            console.error('데이터 로드 실패:', error);
-            var tbody = document.getElementById('keyword-table-body');
-            if (tbody) {
-                tbody.innerHTML = '<tr><td colspan="6" class="text-center">데이터를 불러오는 중 오류가 발생했습니다: ' + error.message + '</td></tr>';
-            }
+            console.error('로드 실패:', error);
+            showTableError('데이터 로드 실패: ' + error.message);
         });
+}
+
+// 테이블 에러 표시
+function showTableError(message) {
+    var tbody = document.getElementById('keyword-table-body');
+    if (tbody) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;">' + message + '</td></tr>';
+    }
 }
 
 // 대시보드 렌더링
 function renderDashboard(data) {
-    console.log('대시보드 렌더링 시작');
+    console.log('렌더링 시작');
     
-    // 업데이트 시간 (한국 시간)
+    // 업데이트 시간
     var updateTime = document.getElementById('update-time');
     if (updateTime && data.generated_at) {
-        console.log('generated_at:', data.generated_at);
-        updateTime.textContent = formatDate(data.generated_at);
+        try {
+            updateTime.textContent = formatDate(data.generated_at);
+        } catch (e) {
+            updateTime.textContent = data.generated_at;
+        }
     }
     
     // SEO 요약
@@ -64,301 +74,180 @@ function renderDashboard(data) {
         keywordReview.innerHTML = data.keyword_review.replace(/\n/g, '<br>');
     }
     
-    // 통계 카드 업데이트
-    updateStatsCards(data.keywords);
+    // 통계 업데이트
+    updateStats(data.keywords);
     
-    // 키워드 테이블 렌더링
-    renderKeywordTable(data.keywords);
+    // 테이블 렌더링
+    renderTable(data.keywords);
     
-    console.log('대시보드 렌더링 완료');
+    console.log('렌더링 완료');
 }
 
-// 통계 카드 업데이트
-function updateStatsCards(keywords) {
-    if (!keywords || !keywords.length) {
-        console.log('키워드 데이터 없음');
-        return;
-    }
+// 통계 업데이트
+function updateStats(keywords) {
+    if (!keywords) return;
     
-    var totalKeywords = keywords.length;
-    var diamondCount = 0;
-    var blueOceanCount = 0;
+    var total = keywords.length;
+    var diamond = 0;
+    var blueocean = 0;
     var sources = {};
     
     for (var i = 0; i < keywords.length; i++) {
         var k = keywords[i];
-        if (k.grade && k.grade.indexOf('DIAMOND') !== -1) {
-            diamondCount++;
-        }
-        if (k.efficiency && k.efficiency < 1.0) {
-            blueOceanCount++;
-        }
-        if (k.source) {
-            sources[k.source] = true;
-        }
+        if (k.grade && k.grade.indexOf('DIAMOND') >= 0) diamond++;
+        if (k.efficiency && k.efficiency < 1.0) blueocean++;
+        if (k.source) sources[k.source] = true;
     }
     
     var sourceCount = Object.keys(sources).length;
     
-    var statTotal = document.getElementById('stat-total');
-    var statDiamond = document.getElementById('stat-diamond');
-    var statBlueocean = document.getElementById('stat-blueocean');
-    var statSources = document.getElementById('stat-sources');
-    
-    if (statTotal) statTotal.textContent = totalKeywords;
-    if (statDiamond) statDiamond.textContent = diamondCount;
-    if (statBlueocean) statBlueocean.textContent = blueOceanCount;
-    if (statSources) statSources.textContent = sourceCount;
-    
-    console.log('통계:', { total: totalKeywords, diamond: diamondCount, blueOcean: blueOceanCount, sources: sourceCount });
+    setElementText('stat-total', total);
+    setElementText('stat-diamond', diamond);
+    setElementText('stat-blueocean', blueocean);
+    setElementText('stat-sources', sourceCount);
 }
 
-// 키워드 테이블 렌더링
-function renderKeywordTable(keywords) {
+// 요소 텍스트 설정 (안전)
+function setElementText(id, text) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = text;
+}
+
+// 테이블 렌더링
+function renderTable(keywords) {
     var tbody = document.getElementById('keyword-table-body');
     if (!tbody) {
-        console.error('keyword-table-body 요소를 찾을 수 없습니다');
+        console.error('테이블 tbody 없음');
         return;
     }
     
-    if (!keywords || !keywords.length) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center">표시할 키워드가 없습니다.</td></tr>';
+    if (!keywords || keywords.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">키워드가 없습니다</td></tr>';
         return;
     }
     
     var html = '';
-    var adInterval = 5;
-    if (typeof CONFIG !== 'undefined' && CONFIG.ads) {
-        adInterval = CONFIG.ads.interval || 5;
-    }
     
     for (var i = 0; i < keywords.length; i++) {
-        // 광고 삽입
-        if (i > 0 && i % adInterval === 0 && typeof AdsManager !== 'undefined') {
-            html += AdsManager.createTableAdRow(6);
+        var item = keywords[i];
+        
+        // 검색량 0인 항목 스킵 (프론트엔드 필터링)
+        if (!item.search_volume || item.search_volume === 0) {
+            continue;
         }
         
-        html += createKeywordRow(keywords[i]);
+        html += createRow(item);
+    }
+    
+    if (html === '') {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">유효한 키워드가 없습니다</td></tr>';
+        return;
     }
     
     tbody.innerHTML = html;
     
-    // 아이콘 재초기화
+    // 아이콘 초기화
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
-    
-    console.log('키워드 테이블 렌더링 완료:', keywords.length + '개');
 }
 
-// 키워드 행 생성
-function createKeywordRow(item) {
+// 테이블 행 생성
+function createRow(item) {
     var sourceClass = item.source === 'NAVER' ? 'badge-naver' : 'badge-coupang';
     var sourceIcon = item.source === 'NAVER' ? 'shopping-bag' : 'shopping-cart';
     
     var gradeClass = 'grade-bad';
     var gradeIcon = '';
+    var grade = item.grade || 'Normal';
     
-    if (item.grade && item.grade.indexOf('DIAMOND') !== -1) {
+    if (grade.indexOf('DIAMOND') >= 0) {
         gradeClass = 'grade-diamond';
         gradeIcon = '<i data-lucide="gem"></i>';
-    } else if (item.grade && item.grade.indexOf('GOLD') !== -1) {
+    } else if (grade.indexOf('GOLD') >= 0) {
         gradeClass = 'grade-gold';
         gradeIcon = '<i data-lucide="star"></i>';
-    } else if (item.grade && item.grade.indexOf('SILVER') !== -1) {
+    } else if (grade.indexOf('SILVER') >= 0) {
         gradeClass = 'grade-silver';
         gradeIcon = '<i data-lucide="sparkles"></i>';
     }
     
     var effClass = '';
     var effIcon = '';
-    var efficiency = item.efficiency || 999;
+    var eff = item.efficiency || 999;
     
-    if (efficiency < 1.0) {
+    if (eff < 1.0) {
         effClass = 'eff-good';
         effIcon = '<i data-lucide="flame"></i>';
-    } else if (efficiency > 5.0) {
+    } else if (eff > 5.0) {
         effClass = 'eff-bad';
         effIcon = '<i data-lucide="droplet"></i>';
     }
     
-    var escapedKw = String(item.keyword).replace(/'/g, "\\'").replace(/"/g, '\\"');
-    var searchVolume = item.search_volume ? Number(item.search_volume).toLocaleString() : '-';
-    var blogCount = item.blog_count ? Number(item.blog_count).toLocaleString() : '-';
-    var goldenScore = item.golden_score ? Number(item.golden_score).toFixed(1) : '-';
-    var efficiencyDisplay = (efficiency !== 999) ? Number(efficiency).toFixed(2) : '-';
+    var keyword = item.keyword || '';
+    var escapedKw = keyword.replace(/'/g, "\\'").replace(/"/g, '\\"');
+    var vol = item.search_volume ? Number(item.search_volume).toLocaleString() : '-';
+    var blog = item.blog_count ? Number(item.blog_count).toLocaleString() : '-';
+    var score = item.golden_score ? Number(item.golden_score).toFixed(1) : '-';
+    var effDisplay = (eff < 999) ? eff.toFixed(2) : '-';
     
     return '<tr>' +
-        '<td data-label="출처">' +
-            '<span class="badge ' + sourceClass + '">' +
-                '<i data-lucide="' + sourceIcon + '"></i> ' +
-                item.source +
-            '</span>' +
-        '</td>' +
-        '<td data-label="키워드">' +
-            '<div class="keyword-cell">' +
-                '<div class="keyword-info">' +
-                    '<div class="keyword-name">' + item.keyword + '</div>' +
-                    '<div class="keyword-grade">' +
-                        '<span class="grade ' + gradeClass + '">' + gradeIcon + ' ' + item.grade + '</span>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="action-btns">' +
-                    '<button class="action-btn copy" onclick="copyKeyword(\'' + escapedKw + '\', this)">' +
-                        '<i data-lucide="copy"></i> 복사' +
-                    '</button>' +
-                    '<a class="action-btn analyze" href="https://search.naver.com/search.naver?query=' + encodeURIComponent(item.keyword) + '" target="_blank" rel="noopener">' +
-                        '<i data-lucide="search"></i> 분석' +
-                    '</a>' +
-                '</div>' +
-            '</div>' +
-        '</td>' +
-        '<td data-label="황금지수" class="num-col">' +
-            '<span class="score-badge">' + goldenScore + '점</span>' +
-        '</td>' +
-        '<td data-label="경쟁강도" class="num-col">' +
-            '<span class="efficiency ' + effClass + '">' + effIcon + ' ' + efficiencyDisplay + '</span>' +
-        '</td>' +
-        '<td data-label="검색량" class="num-col"><strong>' + searchVolume + '</strong></td>' +
-        '<td data-label="블로그수" class="num-col">' + blogCount + '</td>' +
+        '<td data-label="출처"><span class="badge ' + sourceClass + '"><i data-lucide="' + sourceIcon + '"></i> ' + item.source + '</span></td>' +
+        '<td data-label="키워드"><div class="keyword-cell"><div class="keyword-info"><div class="keyword-name">' + keyword + '</div><div class="keyword-grade"><span class="grade ' + gradeClass + '">' + gradeIcon + ' ' + grade + '</span></div></div><div class="action-btns"><button class="action-btn copy" onclick="copyKeyword(\'' + escapedKw + '\', this)"><i data-lucide="copy"></i> 복사</button><a class="action-btn analyze" href="https://search.naver.com/search.naver?query=' + encodeURIComponent(keyword) + '" target="_blank" rel="noopener"><i data-lucide="search"></i> 분석</a></div></div></td>' +
+        '<td data-label="황금지수" class="num-col"><span class="score-badge">' + score + '점</span></td>' +
+        '<td data-label="경쟁강도" class="num-col"><span class="efficiency ' + effClass + '">' + effIcon + ' ' + effDisplay + '</span></td>' +
+        '<td data-label="검색량" class="num-col"><strong>' + vol + '</strong></td>' +
+        '<td data-label="블로그수" class="num-col">' + blog + '</td>' +
     '</tr>';
 }
 
-// ============================================
-// 아카이브 관련 함수
-// ============================================
-
-// 아카이브 목록 로드
+// 아카이브 로드
 function loadArchiveList() {
     var apiUrl = 'output/archive_list.json';
-    if (typeof CONFIG !== 'undefined' && CONFIG.api) {
-        apiUrl = CONFIG.api.archiveList || apiUrl;
-    }
     
-    console.log('=== 아카이브 로드 시작 ===');
-    console.log('아카이브 URL:', apiUrl);
+    console.log('아카이브 로드:', apiUrl);
     
     fetch(apiUrl)
         .then(function(response) {
-            console.log('아카이브 응답 상태:', response.status);
-            console.log('아카이브 응답 OK:', response.ok);
-            
-            if (!response.ok) {
-                throw new Error('HTTP 오류: ' + response.status);
-            }
+            if (!response.ok) throw new Error('HTTP ' + response.status);
             return response.json();
         })
         .then(function(files) {
-            console.log('아카이브 파일 목록:', files);
-            console.log('아카이브 파일 수:', files ? files.length : 0);
-            
-            if (files && files.length > 0) {
-                renderArchiveList(files);
-            } else {
-                var container = document.getElementById('archive-list');
-                if (container) {
-                    container.innerHTML = '<li class="archive-empty">저장된 아카이브가 없습니다.</li>';
-                }
-            }
+            console.log('아카이브 파일:', files);
+            renderArchiveList(files);
         })
         .catch(function(error) {
-            console.error('=== 아카이브 로드 실패 ===');
-            console.error('오류:', error.message);
-            
+            console.error('아카이브 로드 실패:', error);
             var container = document.getElementById('archive-list');
             if (container) {
-                container.innerHTML = '<li class="archive-error">' +
-                    '<i data-lucide="alert-circle"></i> ' +
-                    '아카이브를 불러올 수 없습니다' +
-                    '</li>';
-                
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
+                container.innerHTML = '<li>아카이브 로드 실패</li>';
             }
         });
 }
 
 // 아카이브 목록 렌더링
 function renderArchiveList(files) {
-    console.log('=== 아카이브 렌더링 시작 ===');
-    
     var container = document.getElementById('archive-list');
-    if (!container) {
-        console.error('archive-list 컨테이너를 찾을 수 없습니다!');
+    if (!container) return;
+    
+    if (!files || files.length === 0) {
+        container.innerHTML = '<li>저장된 아카이브가 없습니다</li>';
         return;
     }
-    
-    console.log('컨테이너 찾음:', container);
-    
-    if (!files || !Array.isArray(files)) {
-        console.error('파일 목록이 배열이 아닙니다:', files);
-        container.innerHTML = '<li class="archive-empty">아카이브 데이터 형식 오류</li>';
-        return;
-    }
-    
-    if (files.length === 0) {
-        container.innerHTML = '<li class="archive-empty">저장된 아카이브가 없습니다.</li>';
-        return;
-    }
-    
-    // 아카이브 경로 설정
-    var archivePath = 'output/archives/';
-    if (typeof CONFIG !== 'undefined' && CONFIG.api && CONFIG.api.archivePath) {
-        archivePath = CONFIG.api.archivePath;
-    }
-    
-    console.log('아카이브 경로:', archivePath);
     
     var html = '';
-    var maxItems = Math.min(files.length, 10);
+    var max = Math.min(files.length, 10);
     
-    for (var i = 0; i < maxItems; i++) {
+    for (var i = 0; i < max; i++) {
         var file = files[i];
-        console.log('처리 중인 파일 [' + i + ']:', file);
+        var name = file.replace('.html', '').replace(/_/g, ' ').replace(/-/g, '.').replace(/(\d+)h/g, '$1시');
         
-        // 파일명에서 날짜/시간 추출하여 보기 좋게 표시
-        // 예: 2026-01-02_16h.html → 2026.01.02 16시
-        var displayName = String(file)
-            .replace('.html', '')
-            .replace(/_/g, ' ')
-            .replace(/-/g, '.')
-            .replace(/(\d+)h/g, '$1시');
-        
-        var fullPath = archivePath + file;
-        console.log('링크 경로:', fullPath);
-        
-        html += '<li class="archive-item">' +
-            '<a href="' + fullPath + '" class="archive-link">' +
-                '<i data-lucide="file-text"></i> ' +
-                '<span class="archive-name">' + displayName + '</span>' +
-                '<i data-lucide="chevron-right" class="archive-arrow"></i>' +
-            '</a>' +
-        '</li>';
+        html += '<li class="archive-item"><a href="output/archives/' + file + '" class="archive-link"><i data-lucide="file-text"></i> <span>' + name + '</span></a></li>';
     }
     
-    // 10개 초과 시 안내
-    if (files.length > 10) {
-        html += '<li class="archive-more">' +
-            '<i data-lucide="more-horizontal"></i> ' +
-            '외 ' + (files.length - 10) + '개의 리포트' +
-        '</li>';
-    }
-    
-    console.log('생성된 HTML 길이:', html.length);
     container.innerHTML = html;
     
-    // 아이콘 재초기화
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
-        console.log('아이콘 초기화 완료');
     }
-    
-    console.log('=== 아카이브 렌더링 완료: ' + maxItems + '개 ===');
-}
-
-// 수동으로 아카이브 다시 로드 (디버깅용)
-function reloadArchive() {
-    console.log('아카이브 수동 재로드...');
-    loadArchiveList();
 }
