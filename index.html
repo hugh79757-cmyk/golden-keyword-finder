@@ -43,35 +43,39 @@
         </figure>
     </main>
 
+   <!-- script 부분만 아래 내용으로 교체하거나 전체 교체 -->
     <script>
         fetch('output/data.json')
             .then(response => response.json())
             .then(data => {
                 const tbody = document.getElementById('keyword-list');
-                const timeLabel = document.getElementById('update-time');
-                timeLabel.innerText = "최근 업데이트: " + new Date().toLocaleString();
+                document.getElementById('update-time').innerText = "업데이트: " + new Date().toLocaleString();
 
                 data.forEach(item => {
                     const tr = document.createElement('tr');
+                    let badgeClass = item.source === 'COUPANG' ? 'badge-coupang' : 'badge-naver';
                     
-                    // 출처에 따라 배지 색상 결정
-                    let badgeClass = 'badge-naver';
-                    if (item.source === 'COUPANG') badgeClass = 'badge-coupang';
-                    
+                    let gradeColor = '#666';
+                    if (item.golden_score >= 70) gradeColor = '#9C27B0'; // 다이아
+                    else if (item.golden_score >= 50) gradeColor = '#FF9800'; // 골드
+
                     tr.innerHTML = `
                         <td><span class="badge ${badgeClass}">${item.source}</span></td>
-                        <td>${item.rank}</td>
-                        <td><strong>${item.keyword}</strong></td>
-                        <td class="rank-high">${item.golden_score}</td>
+                        <td>${item.rank}위</td>
+                        <td>
+                            <strong>${item.keyword}</strong><br>
+                            <small style="color:${gradeColor}; font-weight:bold;">${item.grade}</small>
+                        </td>
+                        <td style="color:${gradeColor}; font-weight:bold;">${item.golden_score}점</td>
+                        <td>${item.search_volume.toLocaleString()}</td>
+                        <td>${item.cpc.toLocaleString()}원</td>
                         <td>${item.blog_count.toLocaleString()}</td>
                     `;
                     tbody.appendChild(tr);
                 });
             })
-            .catch(err => {
-                console.error(err);
-                document.getElementById('keyword-list').innerHTML = "<tr><td colspan='5'>데이터가 없습니다.</td></tr>";
-            });
+            .catch(err => console.error(err));
     </script>
+
 </body>
 </html>
