@@ -473,6 +473,98 @@ def create_archive_html(data, filename):
     
     with open(filename, "w", encoding='utf-8') as f:
         f.write(html_content)
+# -------------------------------------------------------------------------
+# 4-1. 키워드 분석 함수들
+# -------------------------------------------------------------------------
+
+def calculate_golden_score(search_volume, blog_count):
+    """황금지수 계산"""
+    if blog_count == 0:
+        return 100.0
+    
+    if search_volume == 0:
+        return 0.0
+    
+    efficiency = blog_count / search_volume
+    
+    # 황금지수 공식: 검색량이 높고 경쟁이 낮을수록 높은 점수
+    if efficiency < 0.1:
+        base_score = 90
+    elif efficiency < 0.5:
+        base_score = 70
+    elif efficiency < 1.0:
+        base_score = 50
+    elif efficiency < 3.0:
+        base_score = 30
+    else:
+        base_score = 10
+    
+    # 검색량 보너스
+    if search_volume > 100000:
+        base_score += 10
+    elif search_volume > 50000:
+        base_score += 5
+    
+    return min(100, base_score)
+
+
+def get_grade(score):
+    """황금지수에 따른 등급 산정"""
+    if score >= 80:
+        return '💎 DIAMOND'
+    elif score >= 60:
+        return '🌟 GOLD'
+    elif score >= 40:
+        return '✨ SILVER'
+    else:
+        return 'Bad'
+
+
+def analyze_keywords(keywords):
+    """키워드 분석 실행 (검색량 0 제외)"""
+    results = []
+    
+    for item in keywords:
+        keyword = item.get('keyword', '')
+        source = item.get('source', 'NAVER')
+        search_volume = item.get('search_volume', 0)
+        blog_count = item.get('blog_count', 0)
+        
+        # 검색량 0이거나 None인 키워드 제외
+        if not search_volume or search_volume == 0:
+            print(f"⏭️ 스킵: '{keyword}' (검색량 0)")
+            continue
+        
+        # 검색량이 너무 낮은 키워드도 제외 (최소 100 이상)
+        if search_volume < 100:
+            print(f"⏭️ 스킵: '{keyword}' (검색량 {search_volume} - 너무 낮음)")
+            continue
+        
+        # 경쟁강도 (효율성) 계산
+        efficiency = round(blog_count / search_volume, 2) if search_volume > 0 else 999.99
+        
+        # 황금지수 계산
+        golden_score = calculate_golden_score(search_volume, blog_count)
+        grade = get_grade(golden_score)
+        
+        results.append({
+            'keyword': keyword,
+            'source': source,
+            'search_volume': search_volume,
+            'blog_count': blog_count,
+            'efficiency': efficiency,
+            'golden_score': round(golden_score, 1),
+            'grade': grade
+        })
+    
+    # 황금지수 기준 정렬 (높은 순)
+    results.sort(key=lambda x: x['golden_score'], reverse=True)
+    
+    print(f"✅ 필터링 완료: {len(results)}개 키워드 (검색량 0 제외)")
+    
+    return results
+
+
 
 # -------------------------------------------------------------------------
 # 5. 메인 실행
@@ -511,20 +603,41 @@ def main():
                 })
                 seen.add(r_clean)
             
-    print(f"📊 {len(final_candidates)}개 분석...")
+    print(f"📊 {len(final_candidates)}개 후보 키워드 수집 완료")
     
+    # 3. 키워드 분석 및 필터링
+    print("🔍 키워드 분석 중 (검색량 0 제외)...")
     final = []
+    skipped_count = 0
+    
     for item in final_candidates:
         kw = item['keyword']
         vol = get_search_volume(kw)
         blog = get_blog_count(kw)
+        
+        # ✅ 검색량 0 또는 None인 키워드 제외
+        if not vol or vol == 0:
+            print(f"⏭️ 스킵: '{kw}' (검색량 0)")
+            skipped_count += 1
+            continue
+        
+        # ✅ 검색량 100 미만인 키워드 제외 (선택사항)
+        if vol < 100:
+            print(f"⏭️ 스킵: '{kw}' (검색량 {vol} - 너무 낮음)")
+            skipped_count += 1
+            continue
+        
         score = calculate_score(vol, blog)
         
         grade = "Normal"
-        if score >= 60: grade = "💎 DIAMOND"
-        elif score >= 40: grade = "🌟 GOLD"
-        elif score >= 20: grade = "✨ SILVER"
-        else: grade = "Normal"
+        if score >= 60: 
+            grade = "💎 DIAMOND"
+        elif score >= 40: 
+            grade = "🌟 GOLD"
+        elif score >= 20: 
+            grade = "✨ SILVER"
+        else: 
+            grade = "Normal"
         
         eff = round(blog / vol, 2) if vol > 0 else 999.99
         final.append({
@@ -535,7 +648,9 @@ def main():
             "blog_count": blog, 
             "efficiency": eff
         })
-        
+    
+    print(f"✅ 분석 완료: {len(final)}개 키워드 (스킵: {skipped_count}개)")
+    
     final.sort(key=lambda x: x['golden_score'], reverse=True)
     
     # SEO 요약 생성
@@ -567,7 +682,8 @@ def main():
     with open("output/archive_list.json", "w", encoding='utf-8') as f:
         json.dump(archives, f)
     
-    print("✅ 완료")
+    print(f"✅ 완료! 총 {len(final)}개 키워드 저장")
 
 if __name__ == "__main__":
     main()
+
