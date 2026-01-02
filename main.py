@@ -15,9 +15,9 @@ NAVER_CLIENT_SECRET = os.environ.get("NAVER_CLIENT_SECRET")
 COUPANG_ACCESS_KEY = os.environ.get("COUPANG_ACCESS_KEY")
 COUPANG_SECRET_KEY = os.environ.get("COUPANG_SECRET_KEY")
 
-NAVER_AD_CUSTOMER_ID = os.environ.get("NAVER_AD_CUSTOMER_ID")
-NAVER_AD_ACCESS_KEY = os.environ.get("NAVER_AD_ACCESS_KEY")
-NAVER_AD_SECRET_KEY = os.environ.get("NAVER_AD_SECRET_KEY")
+NAVER_AD_CUSTOMER_ID = os.environ.get("NAVER_AD_CUSTOMER_ID", "").strip()
+NAVER_AD_ACCESS_KEY = os.environ.get("NAVER_AD_ACCESS_KEY", "").strip()
+NAVER_AD_SECRET_KEY = os.environ.get("NAVER_AD_SECRET_KEY", "").strip()
 
 # -------------------------------------------------------------------------
 # 2. 유틸리티
