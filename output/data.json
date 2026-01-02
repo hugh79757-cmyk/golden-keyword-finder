@@ -1,6 +1,106 @@
 [
   {
     "source": "NAVER",
+    "rank": 3,
+    "keyword": "닌텐도 스위치",
+    "golden_score": 50.0,
+    "grade": "🌟 GOLD",
+    "search_volume": 153100,
+    "cpc": 0,
+    "blog_count": 429412
+  },
+  {
+    "source": "NAVER",
+    "rank": 6,
+    "keyword": "엡피 다이어리",
+    "golden_score": 32.3,
+    "grade": "✨ SILVER",
+    "search_volume": 230,
+    "cpc": 0,
+    "blog_count": 6
+  },
+  {
+    "source": "COUPANG",
+    "rank": 4,
+    "keyword": "까사니 인덕션",
+    "golden_score": 20.1,
+    "grade": "Normal",
+    "search_volume": 10,
+    "cpc": 0,
+    "blog_count": 1339
+  },
+  {
+    "source": "COUPANG",
+    "rank": 3,
+    "keyword": "테팔 인덕션",
+    "golden_score": 15.1,
+    "grade": "Normal",
+    "search_volume": 1510,
+    "cpc": 0,
+    "blog_count": 22094
+  },
+  {
+    "source": "NAVER",
+    "rank": 4,
+    "keyword": "생폰 맥세이프",
+    "golden_score": 14.0,
+    "grade": "Normal",
+    "search_volume": 400,
+    "cpc": 0,
+    "blog_count": 5310
+  },
+  {
+    "source": "COUPANG",
+    "rank": 1,
+    "keyword": "크리넥스 데코",
+    "golden_score": 11.6,
+    "grade": "Normal",
+    "search_volume": 160,
+    "cpc": 0,
+    "blog_count": 8461
+  },
+  {
+    "source": "NAVER",
+    "rank": 2,
+    "keyword": "풀커버 범퍼",
+    "golden_score": 10.6,
+    "grade": "Normal",
+    "search_volume": 60,
+    "cpc": 0,
+    "blog_count": 8395
+  },
+  {
+    "source": "NAVER",
+    "rank": 7,
+    "keyword": "삼성전자 갤럭시탭",
+    "golden_score": 5.1,
+    "grade": "Normal",
+    "search_volume": 510,
+    "cpc": 0,
+    "blog_count": 96869
+  },
+  {
+    "source": "NAVER",
+    "rank": 8,
+    "keyword": "삼성전자 갤럭시탭",
+    "golden_score": 5.1,
+    "grade": "Normal",
+    "search_volume": 510,
+    "cpc": 0,
+    "blog_count": 96869
+  },
+  {
+    "source": "NAVER",
+    "rank": 10,
+    "keyword": "Apple 아이패드",
+    "golden_score": 0.3,
+    "grade": "Normal",
+    "search_volume": 30,
+    "cpc": 0,
+    "blog_count": 123032
+  },
+  {
+    "source": "NAVER",
     "rank": 1,
     "keyword": "엠비에프 HDMI",
     "golden_score": 0,
@@ -8,36 +108,6 @@
     "search_volume": 0,
     "cpc": 0,
     "blog_count": 957
-  },
-  {
-    "source": "NAVER",
-    "rank": 2,
-    "keyword": "풀커버 범퍼",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 8395
-  },
-  {
-    "source": "NAVER",
-    "rank": 3,
-    "keyword": "닌텐도 스위치",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 429415
-  },
-  {
-    "source": "NAVER",
-    "rank": 4,
-    "keyword": "생폰 맥세이프",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 5310
   },
   {
     "source": "NAVER",
@@ -51,36 +121,6 @@
   },
   {
     "source": "NAVER",
-    "rank": 6,
-    "keyword": "엡피 다이어리",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 6
-  },
-  {
-    "source": "NAVER",
-    "rank": 7,
-    "keyword": "삼성전자 갤럭시탭",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 96865
-  },
-  {
-    "source": "NAVER",
-    "rank": 8,
-    "keyword": "삼성전자 갤럭시탭",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 96865
-  },
-  {
-    "source": "NAVER",
     "rank": 9,
     "keyword": "방탄 범퍼",
     "golden_score": 0,
@@ -90,26 +130,6 @@
     "blog_count": 9126
   },
   {
-    "source": "NAVER",
-    "rank": 10,
-    "keyword": "Apple 아이패드",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 123032
-  },
-  {
-    "source": "COUPANG",
-    "rank": 1,
-    "keyword": "크리넥스 데코",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 8460
-  },
-  {
     "source": "COUPANG",
     "rank": 2,
     "keyword": "보몽드 마이크로화이버",
@@ -117,27 +137,7 @@
     "grade": "Normal",
     "search_volume": 0,
     "cpc": 0,
-    "blog_count": 53
-  },
-  {
-    "source": "COUPANG",
-    "rank": 3,
-    "keyword": "테팔 인덕션",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 22091
-  },
-  {
-    "source": "COUPANG",
-    "rank": 4,
-    "keyword": "까사니 인덕션",
-    "golden_score": 0,
-    "grade": "Normal",
-    "search_volume": 0,
-    "cpc": 0,
-    "blog_count": 1338
+    "blog_count": 54
   },
   {
     "source": "COUPANG",
@@ -147,6 +147,6 @@
     "grade": "Normal",
     "search_volume": 0,
     "cpc": 0,
-    "blog_count": 600
+    "blog_count": 601
   }
 ]
