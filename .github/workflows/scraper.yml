@@ -2,9 +2,8 @@ name: Daily Keyword Scraper
 
 on:
   schedule:
-    # 매일 한국 시간 오전 6시 (UTC 21:00) 실행
-    - cron: '0 21 * * *'
-  workflow_dispatch: # 수동 실행 버튼 활성화
+    - cron: '0 21 * * *' # 매일 한국시간 오전 6시
+  workflow_dispatch: # 수동 실행 버튼
 
 permissions:
   contents: write
@@ -14,8 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 저장소 체크아웃
+    - name: 저장소 체크아웃 (전체 기록 가져오기)
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0 # <--- [핵심] 봇에게 "과거 기록까지 다 가져와"라고 시키는 옵션
 
     - name: 파이썬 설정
       uses: actions/setup-python@v4
@@ -27,20 +28,23 @@ jobs:
         pip install -r requirements.txt
 
     - name: 크롤러 실행
+      env:
+        NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+        NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
       run: |
         python main.py
 
-           - name: 결과물 커밋 및 푸시
+    - name: 결과물 커밋 및 푸시
       run: |
         git config --global user.name 'GitHub Action Bot'
         git config --global user.email 'action@github.com'
         
-        # 1. 일단 봇이 만든 파일을 스테이징하고 커밋합니다.
+        # 1. 봇이 만든 파일 커밋
         git add output/data.json
         git commit -m "🤖 봇: 데이터 자동 업데이트" || exit 0
         
-        # 2. [핵심] 커밋한 뒤에 최신 코드를 당겨와서 합칩니다 (Rebase)
+        # 2. 최신 코드 받아오기 (기록이 있어서 이제 성공함)
         git pull origin main --rebase
         
-        # 3. 합쳐진 결과를 밉니다.
+        # 3. 밀어넣기
         git push
