@@ -2,71 +2,136 @@
   {
     "source": "NAVER",
     "keyword": "엠비에프 HDMI",
-    "golden_score": "🌟 GOLD",
-    "rank": "1위",
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
     "blog_count": 957
   },
   {
     "source": "NAVER",
     "keyword": "풀커버 범퍼",
-    "golden_score": "✨ Silver",
-    "rank": "2위",
-    "blog_count": 8394
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 8395
   },
   {
     "source": "NAVER",
     "keyword": "닌텐도 스위치",
-    "golden_score": "Normal",
-    "rank": "3위",
-    "blog_count": 429412
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 429413
   },
   {
     "source": "NAVER",
     "keyword": "생폰 맥세이프",
-    "golden_score": "✨ Silver",
-    "rank": "4위",
-    "blog_count": 5311
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 5310
   },
   {
     "source": "NAVER",
     "keyword": "스테나 STN",
-    "golden_score": "✨ Silver",
-    "rank": "5위",
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
     "blog_count": 2164
   },
   {
     "source": "NAVER",
-    "keyword": "삼성전자 갤럭시탭",
-    "golden_score": "Normal",
-    "rank": "6위",
-    "blog_count": 96861
-  },
-  {
-    "source": "NAVER",
     "keyword": "엡피 다이어리",
-    "golden_score": "🌟 GOLD",
-    "rank": "7위",
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
     "blog_count": 6
   },
   {
     "source": "NAVER",
     "keyword": "삼성전자 갤럭시탭",
-    "golden_score": "Normal",
-    "rank": "8위",
-    "blog_count": 96861
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 96865
+  },
+  {
+    "source": "NAVER",
+    "keyword": "삼성전자 갤럭시탭",
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 96865
   },
   {
     "source": "NAVER",
     "keyword": "방탄 범퍼",
-    "golden_score": "✨ Silver",
-    "rank": "9위",
-    "blog_count": 9125
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 9126
   },
   {
     "source": "NAVER",
     "keyword": "Apple 아이패드",
-    "golden_score": "Normal",
-    "rank": "10위",
-    "blog_count": 123030
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 123032
+  },
+  {
+    "source": "COUPANG",
+    "keyword": "크리넥스 데코",
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 8458
+  },
+  {
+    "source": "COUPANG",
+    "keyword": "보몽드 마이크로화이버",
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 51
+  },
+  {
+    "source": "COUPANG",
+    "keyword": "테팔 인덕션",
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 22089
+  },
+  {
+    "source": "COUPANG",
+    "keyword": "까사니 인덕션",
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 1336
+  },
+  {
+    "source": "COUPANG",
+    "keyword": "HanilMedical 황토",
+    "golden_score": 0,
+    "grade": "❓ NO DATA",
+    "search_volume": 0,
+    "cpc": 0,
+    "blog_count": 598
   }
 ]
