@@ -1,5 +1,5 @@
 requests
 pytrends
-google-api-python-client
-oauth2client
+google-search-console-api
 pandas
+

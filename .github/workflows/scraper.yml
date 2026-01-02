@@ -29,12 +29,17 @@ jobs:
 
     - name: 크롤러 실행
       env:
-        # 네이버 키
+        # (기존 키들...)
         NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
         NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
-        # 쿠팡 키 (없으면 비워두거나 주석 처리해도 됨)
         COUPANG_ACCESS_KEY: ${{ secrets.COUPANG_ACCESS_KEY }}
         COUPANG_SECRET_KEY: ${{ secrets.COUPANG_SECRET_KEY }}
+        
+        # [NEW] 네이버 광고 API 키 (필수)
+        NAVER_AD_CUSTOMER_ID: ${{ secrets.NAVER_AD_CUSTOMER_ID }}
+        NAVER_AD_ACCESS_KEY: ${{ secrets.NAVER_AD_ACCESS_KEY }}
+        NAVER_AD_SECRET_KEY: ${{ secrets.NAVER_AD_SECRET_KEY }}
+
       run: |
         python main.py
 
