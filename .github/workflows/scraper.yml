@@ -2,7 +2,8 @@ name: Daily Keyword Scraper
 
 on:
   schedule:
-    - cron: '0 21 * * *'
+    # 매일 UTC 23:00 (한국 08:00), UTC 09:00 (한국 18:00)
+    - cron: '0 23,9 * * *'
   workflow_dispatch:
 
 permissions:

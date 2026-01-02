@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="실시간 황금 키워드 분석 리포트">
     <title>황금 키워드 상황실</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <style>
         body { font-family: 'Pretendard', sans-serif; }
         .container { max-width: 1400px; }
-        
         .badge { padding: 4px 8px; border-radius: 6px; font-size: 0.75em; font-weight: bold; color: white; vertical-align: middle; }
         .badge-naver { background-color: #03C75A; }
         .badge-coupang { background-color: #E60F29; }
@@ -19,9 +19,13 @@
         .grade-bad { color: #999; font-size: 0.9em; }
 
         .eff-good { color: #2e7d32; font-weight: bold; }
-        .eff-bad { color: #d32f2f; } 
+        .eff-bad { color: #d32f2f; }
         
-        th { font-weight: bold; color: #333; background-color: #f4f4f4; white-space: nowrap; font-size: 0.9em; }
+        /* 요약 박스 스타일 */
+        .summary-box { background-color: #f0f7ff; padding: 20px; border-radius: 10px; border: 1px solid #cce5ff; margin-bottom: 30px; line-height: 1.6; }
+        .summary-title { color: #0056b3; margin-top: 0; margin-bottom: 10px; font-weight: bold; }
+        
+        th { font-weight: bold; background-color: #f4f4f4; white-space: nowrap; font-size: 0.9em; }
         td { vertical-align: middle; font-size: 0.95em; }
         .num-col { text-align: right; }
     </style>
@@ -29,20 +33,18 @@
 <body>
     <main class="container">
         <nav>
-            <ul>
-                <li><strong>💎 황금 키워드 발굴기</strong></li>
-            </ul>
-            <ul>
-                <li><small id="update-time">업데이트 중...</small></li>
-            </ul>
+            <ul><li><strong>💎 황금 키워드 발굴기</strong></li></ul>
+            <ul><li><small id="update-time">분석 중...</small></li></ul>
         </nav>
 
-        <article>
-            <p>
-                <strong>💡 경쟁 강도(경쟁률):</strong> 블로그 수 ÷ 검색량<br>
-                <small>* 수치가 <strong>1.0 미만(🔥)</strong>이면 글이 부족한 '블루오션'입니다. (낮을수록 좋음)</small>
-            </p>
-            
+        <!-- 상단 요약 -->
+        <section id="top-briefing" class="summary-box" style="display:none;">
+            <h3 class="summary-title">📊 오늘의 트렌드 요약</h3>
+            <p id="briefing-content"></p>
+        </section>
+
+        <section>
+            <p><strong>💡 경쟁 강도:</strong> (블로그 수 ÷ 검색량). 수치가 <strong>🔥 1.0 미만</strong>이면 '블루오션'입니다.</p>
             <figure>
                 <table role="grid">
                     <thead>
@@ -51,62 +53,99 @@
                             <th scope="col" style="width: 8%;">순위</th>
                             <th scope="col">키워드</th>
                             <th scope="col" class="num-col">황금지수</th>
-                            <th scope="col" class="num-col">경쟁강도 (경쟁률)</th>
+                            <th scope="col" class="num-col">경쟁강도</th>
                             <th scope="col" class="num-col">월간 검색량</th>
-                            <th scope="col" class="num-col">광고단가(CPC)</th>
                             <th scope="col" class="num-col">블로그 수</th>
                         </tr>
                     </thead>
                     <tbody id="keyword-list">
-                        <tr><td colspan="8">데이터를 불러오는 중입니다...</td></tr>
+                        <tr><td colspan="7">데이터를 불러오는 중입니다...</td></tr>
                     </tbody>
                 </table>
             </figure>
-        </article>
+        </section>
+
+        <!-- 하단 요약 (동일 내용) -->
+        <section id="bottom-briefing" class="summary-box" style="display:none; margin-top:30px;">
+            <h3 class="summary-title">📝 분석 요약</h3>
+            <p id="briefing-content-bottom"></p>
+        </section>
+
+        <section style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px;">
+            <h3>🗄️ 지난 리포트 (아카이브)</h3>
+            <ul id="archive-list" style="list-style: none; padding: 0;"><li>로딩 중...</li></ul>
+        </section>
     </main>
 
     <script>
+        // 5문장 생성 함수
+        function generateBriefingText(topItem) {
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('ko-KR');
+            const kw = topItem.keyword;
+            const vol = topItem.search_volume.toLocaleString();
+            const eff = topItem.efficiency;
+            
+            let status = "매우 양호(블루오션)";
+            let recommend = "지금 바로 블로그 포스팅이나 상품 등록을 추천합니다.";
+            
+            if (eff > 5.0) {
+                status = "다소 높음(레드오션)";
+                recommend = "경쟁이 치열하므로 세부 키워드로 우회하는 전략이 필요합니다.";
+            } else if (eff > 1.0) {
+                status = "보통";
+                recommend = "충분히 진입해볼 만한 시장입니다.";
+            }
+
+            return `
+                1. <strong>${dateStr}</strong> 기준, 현재 데이터를 분석한 결과 가장 가치 있는 키워드는 <span style="color:#d81b60; font-weight:bold;">'${kw}'</span>입니다.<br>
+                2. 이 키워드의 월간 검색량은 약 <strong>${vol}건</strong>으로 상당히 높은 수요를 보이고 있습니다.<br>
+                3. 반면 경쟁 강도(블로그 수 대비 검색량)는 <strong>${eff}</strong> 수준으로, 경쟁 상태가 <strong>'${status}'</strong>입니다.<br>
+                4. 따라서 ${recommend}<br>
+                5. 이 데이터는 실시간 트렌드를 반영하므로, 빠르게 선점하여 트래픽을 확보하시기 바랍니다.
+            `;
+        }
+
+        // 1. 데이터 로딩
         fetch('output/data.json')
             .then(response => response.json())
             .then(data => {
                 const tbody = document.getElementById('keyword-list');
-                const timeLabel = document.getElementById('update-time');
+                document.getElementById('update-time').innerText = "최종 업데이트: " + new Date().toLocaleString('ko-KR');
                 
-                timeLabel.innerText = "최종 분석: " + new Date().toLocaleString();
-                tbody.innerHTML = '';
+                // [요약 생성] 데이터가 있을 때만 실행
+                if (data && data.length > 0) {
+                    const text = generateBriefingText(data[0]);
+                    document.getElementById('briefing-content').innerHTML = text;
+                    document.getElementById('briefing-content-bottom').innerHTML = text;
+                    document.getElementById('top-briefing').style.display = 'block';
+                    document.getElementById('bottom-briefing').style.display = 'block';
+                }
 
+                tbody.innerHTML = '';
                 data.forEach(item => {
                     const tr = document.createElement('tr');
-                    
                     let badgeClass = item.source === 'COUPANG' ? 'badge-coupang' : 'badge-naver';
                     
                     let scoreHtml = `<span class="grade-bad">${item.golden_score}점</span>`;
                     if (item.grade.includes("DIAMOND")) scoreHtml = `<span class="grade-dia">💎 ${item.golden_score}점</span>`;
                     else if (item.grade.includes("GOLD")) scoreHtml = `<span class="grade-gold">🌟 ${item.golden_score}점</span>`;
-                    else if (item.grade.includes("SILVER")) scoreHtml = `<span class="grade-silver">✨ ${item.golden_score}점</span>`;
-
-                    let comp = item.efficiency;
-                    if (!comp) comp = (item.blog_count / (item.search_volume || 1)).toFixed(2);
                     
                     let effClass = '';
                     let effIcon = '';
-                    
+                    let comp = item.efficiency;
+                    if (comp === undefined) comp = 999.99; // 안전장치
+
                     if (comp < 1.0) { effClass = 'eff-good'; effIcon = '🔥'; }
                     else if (comp > 5.0) { effClass = 'eff-bad'; effIcon = '💧'; }
 
                     tr.innerHTML = `
                         <td><span class="badge ${badgeClass}">${item.source}</span></td>
                         <td>${item.rank}</td>
-                        <td>
-                            <strong>${item.keyword}</strong><br>
-                            <small style="color:#666;">${item.grade}</small>
-                        </td>
+                        <td><strong>${item.keyword}</strong><br><small style="color:#666;">${item.grade}</small></td>
                         <td class="num-col">${scoreHtml}</td>
-                        <td class="num-col ${effClass}">
-                            ${effIcon} ${comp}
-                        </td>
+                        <td class="num-col ${effClass}">${effIcon} ${comp}</td>
                         <td class="num-col"><strong>${item.search_volume.toLocaleString()}</strong></td>
-                        <td class="num-col">${item.cpc.toLocaleString()}</td>
                         <td class="num-col">${item.blog_count.toLocaleString()}</td>
                     `;
                     tbody.appendChild(tr);
@@ -114,7 +153,22 @@
             })
             .catch(err => {
                 console.error(err);
-                tbody.innerHTML = "<tr><td colspan='8'>데이터 로딩 실패</td></tr>";
+                document.getElementById('keyword-list').innerHTML = "<tr><td colspan='7'>데이터 로딩 중 에러가 발생했습니다.</td></tr>";
+            });
+
+        // 2. 아카이브 목록
+        fetch('output/archive_list.json')
+            .then(res => res.json())
+            .then(files => {
+                const list = document.getElementById('archive-list');
+                list.innerHTML = '';
+                files.forEach(file => {
+                    const name = file.replace('.html', '').replace('_', '일 ').replace('h', '시 리포트');
+                    const li = document.createElement('li');
+                    // 일반 링크 (새 창 아님)
+                    li.innerHTML = `<a href="output/archives/${file}">📂 ${name}</a>`;
+                    list.appendChild(li);
+                });
             });
     </script>
 </body>
