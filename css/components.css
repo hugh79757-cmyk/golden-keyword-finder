@@ -217,3 +217,93 @@
 .review-content strong {
     color: var(--text-primary);
 }
+/* 광고 컨테이너 공통 스타일 */
+.ad-container {
+    margin: 1.5rem 0;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+/* 인라인 광고 */
+.ad-inline {
+    padding: 0.5rem;
+}
+
+.ad-inline .adsbygoogle {
+    width: 100%;
+    max-width: 728px;
+}
+
+/* 테이블 내 광고 행 */
+.ad-row {
+    background: transparent !important;
+}
+
+.ad-row:hover {
+    background: transparent !important;
+}
+
+.ad-cell {
+    padding: 1rem !important;
+    border: none !important;
+}
+
+.ad-cell .adsbygoogle {
+    width: 100%;
+    min-height: 90px;
+}
+
+/* 카드형 광고 (모바일) */
+.ad-card {
+    padding: 0.5rem;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ad-card .adsbygoogle {
+    width: 100%;
+    min-height: 250px;
+}
+
+/* 사이드 광고 (데스크톱) */
+.ad-side {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    min-height: 600px;
+    z-index: 100;
+}
+
+.ad-left {
+    left: 10px;
+}
+
+.ad-right {
+    right: 10px;
+}
+
+/* 반응형 - 모바일에서 사이드 광고 숨김 */
+@media (max-width: 1400px) {
+    .ad-side {
+        display: none;
+    }
+}
+
+/* 반응형 - 테이블 광고 조정 */
+@media (max-width: 768px) {
+    .ad-cell {
+        padding: 0.5rem !important;
+    }
+    
+    .ad-inline {
+        margin: 1rem 0;
+    }
+}

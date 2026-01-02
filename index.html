@@ -3,221 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>황금 키워드 발굴기 - 블루오션 키워드 분석</title>
     
-    <!-- #region SEO 메타 태그 -->
-    <title>황금 키워드 발굴기 | 실시간 블루오션 키워드 분석 도구</title>
-    <meta name="description" content="네이버, 쿠팡 실시간 트렌드를 분석하여 검색량은 높고 경쟁은 낮은 황금 키워드를 자동으로 발굴합니다. 블로거, 마케터, 셀러를 위한 무료 키워드 분석 도구.">
-    <meta name="keywords" content="황금키워드, 블루오션키워드, 키워드분석, 네이버키워드, 쿠팡키워드, SEO, 블로그키워드">
-    <meta name="author" content="황금 키워드 발굴기">
-    <meta name="robots" content="index, follow">
+    <!-- SEO 메타 태그 -->
+    <meta name="description" content="네이버와 쿠팡의 실시간 트렌드를 분석하여 블루오션 황금 키워드를 발굴합니다. 검색량 대비 경쟁이 낮은 키워드를 찾아보세요.">
     <link rel="canonical" href="https://golden-keyword-finder.pages.dev/">
-    <!-- #endregion -->
     
-    <!-- #region Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="황금 키워드 발굴기 - 블루오션 키워드 자동 발굴">
-    <meta property="og:description" content="검색량은 높고 경쟁은 낮은 황금 키워드를 실시간으로 발굴하세요.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="황금 키워드 발굴기">
+    <meta property="og:description" content="실시간 트렌드 분석으로 블루오션 키워드를 발굴하세요">
     <meta property="og:image" content="https://golden-keyword-finder.pages.dev/assets/og-image.png">
     <meta property="og:url" content="https://golden-keyword-finder.pages.dev/">
-    <meta property="og:locale" content="ko_KR">
-    <!-- #endregion -->
     
-    <!-- #region Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="황금 키워드 발굴기">
-    <meta name="twitter:description" content="블루오션 키워드를 실시간으로 발굴하세요!">
-    <meta name="twitter:image" content="https://golden-keyword-finder.pages.dev/assets/og-image.png">
-    <!-- #endregion -->
+    <!-- 폰트 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     
-    <!-- #region 파비콘 & PWA -->
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="apple-touch-icon" href="assets/og-image.png">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#09090b">
-    <!-- #endregion -->
+    <!-- 아이콘 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- #region 외부 리소스 -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6677996696534146" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/static/pretendard.css">
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <!-- #endregion -->
+    <!-- ✅ AdSense 스크립트 (head에 한 번만) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6677996696534146"
+         crossorigin="anonymous"></script>
     
-    <!-- #region 스타일시트 -->
+    <!-- CSS -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <!-- #endregion -->
-    
-    <!-- #region 구조화된 데이터 -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "황금 키워드 발굴기",
-        "description": "네이버, 쿠팡 실시간 트렌드를 분석하여 블루오션 키워드를 자동으로 발굴하는 무료 도구",
-        "url": "https://golden-keyword-finder.pages.dev/",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
-    }
-    </script>
-    <!-- #endregion -->
 </head>
 <body>
-    <div class="page-wrapper">
-        <div class="container">
-            
-            <!-- #region 헤더 -->
-            <header class="header">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i data-lucide="gem"></i>
-                    </div>
-                    <div class="logo-text-wrap">
-                        <span class="logo-text">황금 키워드 발굴기</span>
-                        <span class="logo-subtitle">Golden Keyword Finder</span>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <div class="update-badge" id="update-time">
-                        <i data-lucide="clock"></i>
-                        <span>분석 중...</span>
-                    </div>
-                    <div class="social-share" id="social-share">
-                        <!-- js/share.js에서 동적 생성 -->
-                    </div>
-                </div>
-            </header>
-            <!-- #endregion -->
+    <!-- 사이드 광고 (데스크톱) -->
+    <aside class="ad-container ad-side ad-left">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6677996696534146"
+             data-ad-slot="7736105857"
+             data-ad-format="vertical"
+             data-full-width-responsive="false"></ins>
+    </aside>
+    
+    <aside class="ad-container ad-side ad-right">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6677996696534146"
+             data-ad-slot="7736105857"
+             data-ad-format="vertical"
+             data-full-width-responsive="false"></ins>
+    </aside>
 
-            <!-- #region 히어로 섹션 -->
-            <section class="hero-section" id="hero-section" style="display:none;">
-                <div class="hero-header">
-                    <div class="hero-icon">
-                        <i data-lucide="bar-chart-3"></i>
-                    </div>
-                    <h1 class="hero-title">오늘의 트렌드 분석</h1>
-                </div>
-                <div class="hero-content" id="hero-content"></div>
+    <div class="main-wrapper">
+        <header class="site-header">
+            <!-- 헤더 내용 -->
+        </header>
+
+        <main class="main-content">
+            <!-- 히어로 섹션 -->
+            <section class="hero-section">
+                <h1><i data-lucide="gem"></i> 황금 키워드 발굴기</h1>
+                <p id="seo-summary">데이터를 불러오는 중...</p>
+                <p class="update-time">마지막 업데이트: <span id="update-time">-</span></p>
             </section>
-            <!-- #endregion -->
 
-            <!-- #region 통계 카드 -->
+            <!-- ✅ 상단 광고 (히어로 아래) -->
+            <div class="ad-container ad-inline">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6677996696534146"
+                     data-ad-slot="7736105857"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+
+            <!-- 통계 카드 -->
             <section class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon purple"><i data-lucide="trending-up"></i></div>
-                    <div class="stat-info">
-                        <div class="stat-value" id="stat-total">-</div>
-                        <div class="stat-label">분석된 키워드</div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon gold"><i data-lucide="gem"></i></div>
-                    <div class="stat-info">
-                        <div class="stat-value" id="stat-diamond">-</div>
-                        <div class="stat-label">다이아몬드 등급</div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon cyan"><i data-lucide="flame"></i></div>
-                    <div class="stat-info">
-                        <div class="stat-value" id="stat-blueocean">-</div>
-                        <div class="stat-label">블루오션 키워드</div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon green"><i data-lucide="shopping-cart"></i></div>
-                    <div class="stat-info">
-                        <div class="stat-value" id="stat-sources">-</div>
-                        <div class="stat-label">데이터 소스</div>
-                    </div>
+                <article class="stat-card">
+                    <i data-lucide="trending-up"></i>
+                    <div class="stat-value" id="stat-total">-</div>
+                    <div class="stat-label">분석된 키워드</div>
+                </article>
+                <!-- 나머지 카드들... -->
+            </section>
+
+            <!-- 키워드 테이블 (내부에 광고 자동 삽입) -->
+            <section class="keyword-section">
+                <h2><i data-lucide="list"></i> 실시간 황금 키워드 랭킹</h2>
+                <div class="table-container">
+                    <table class="keyword-table">
+                        <thead>
+                            <tr>
+                                <th>출처</th>
+                                <th>키워드</th>
+                                <th>등급</th>
+                                <th>황금지수</th>
+                                <th>경쟁강도</th>
+                                <th>월간검색량</th>
+                                <th>블로그수</th>
+                            </tr>
+                        </thead>
+                        <tbody id="keyword-table-body">
+                            <!-- JS로 동적 생성 + 광고 삽입 -->
+                        </tbody>
+                    </table>
                 </div>
             </section>
-            <!-- #endregion -->
 
-            <!-- #region 광고 공간 1 -->
-            <div class="ad-space"><span class="ad-label">Advertisement</span></div>
-            <!-- #endregion -->
+            <!-- ✅ 중간 광고 (테이블 아래) -->
+            <div class="ad-container ad-inline">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6677996696534146"
+                     data-ad-slot="7736105857"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
 
-            <!-- #region 데이터 테이블 -->
-            <section class="table-card">
-                <div class="table-header">
-                    <h2 class="table-title">
-                        <div class="table-title-icon"><i data-lucide="trophy"></i></div>
-                        실시간 황금 키워드 랭킹
-                    </h2>
-                    <div class="legend">
-                        <span class="legend-item"><span class="legend-dot blue"></span>블루오션 (경쟁 &lt; 1.0)</span>
-                        <span class="legend-item"><span class="legend-dot red"></span>레드오션 (경쟁 &gt; 5.0)</span>
-                    </div>
-                </div>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>출처</th>
-                            <th>순위</th>
-                            <th>키워드</th>
-                            <th class="num-col">황금지수</th>
-                            <th class="num-col">경쟁강도</th>
-                            <th class="num-col">월간검색량</th>
-                            <th class="num-col">블로그수</th>
-                        </tr>
-                    </thead>
-                    <tbody id="keyword-list">
-                        <tr><td colspan="7" class="loading-cell">데이터를 불러오는 중...</td></tr>
-                    </tbody>
-                </table>
+            <!-- 키워드 총평 -->
+            <section class="review-section">
+                <h2><i data-lucide="message-square"></i> 오늘의 키워드 총평</h2>
+                <p id="keyword-review">분석 결과를 불러오는 중...</p>
             </section>
-            <!-- #endregion -->
 
-            <!-- #region 광고 공간 2 -->
-            <div class="ad-space"><span class="ad-label">Advertisement</span></div>
-            <!-- #endregion -->
-
-            <!-- #region 아카이브 -->
+            <!-- 아카이브 -->
             <section class="archive-section">
-                <div class="archive-header">
-                    <div class="archive-icon"><i data-lucide="folder-open"></i></div>
-                    <h2 class="archive-title">지난 분석 리포트</h2>
-                </div>
-                <ul class="archive-grid" id="archive-list">
-                    <li class="archive-item"><a href="#">로딩 중...</a></li>
+                <h2><i data-lucide="folder"></i> 지난 분석 리포트</h2>
+                <ul id="archive-list" class="archive-list">
+                    <li>불러오는 중...</li>
                 </ul>
             </section>
-            <!-- #endregion -->
 
-            <!-- #region 푸터 -->
-            <footer class="footer">
-                <div class="footer-social" id="footer-social">
-                    <!-- js/share.js에서 동적 생성 -->
-                </div>
-                <p>© 2025 황금 키워드 발굴기</p>
-                <p class="footer-sub">블로거, 마케터, 셀러를 위한 무료 키워드 분석 도구</p>
-            </footer>
-            <!-- #endregion -->
+            <!-- ✅ 하단 광고 -->
+            <div class="ad-container ad-inline">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6677996696534146"
+                     data-ad-slot="7736105857"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+        </main>
 
-        </div>
+        <footer class="site-footer">
+            <!-- 푸터 내용 -->
+        </footer>
     </div>
 
-    <!-- #region 토스트 -->
-    <div class="toast" id="toast">
-        <i data-lucide="check-circle"></i>
-        <span id="toast-message">복사되었습니다!</span>
-    </div>
-    <!-- #endregion -->
-
-    <!-- #region 모달 컨테이너 -->
-    <div id="modal-container"></div>
-    <!-- #endregion -->
-
-    <!-- #region 스크립트 -->
+    <!-- JS 파일 -->
     <script src="js/config.js"></script>
     <script src="js/utils.js"></script>
+    <script src="js/ads.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/share.js"></script>
     <script src="js/app.js"></script>
-    <!-- #endregion -->
+    
+    <!-- ✅ 광고 초기화 (마지막에) -->
+    <script>
+        // 아이콘 초기화
+        lucide.createIcons();
+        
+        // 광고 초기화 (페이지 로드 완료 후)
+        window.addEventListener('load', function() {
+            AdsManager.initAllAds();
+        });
+    </script>
 </body>
 </html>
