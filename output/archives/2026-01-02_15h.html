@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>2026년 01월 02일 15시 황금 키워드 리포트 | 블루오션 키워드 분석</title>
+    <meta name="description" content="2026년 01월 02일 기준 네이버, 쿠팡 실시간 트렌드 분석.  등 황금 키워드 0개 발굴. 다이아몬드 0개, 블루오션 0개.">
+    <meta name="keywords" content="황금키워드, 블루오션키워드, ">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="2026년 01월 02일 15시 황금 키워드 리포트">
+    <meta property="og:description" content="다이아몬드 0개, 블루오션 0개 발견!">
+    <meta property="og:locale" content="ko_KR">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/static/pretendard.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    
+    <style>
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .back-btn:hover {
+            background: var(--bg-card-hover);
+            color: var(--text-primary);
+        }
+        .back-btn svg { width: 16px; height: 16px; }
+        
+        .review-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 28px;
+            margin-top: 28px;
+            white-space: pre-line;
+            line-height: 1.8;
+        }
+        .review-section h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .review-content {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .review-content strong {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <header class="header">
+                <div class="logo">
+                    <div class="logo-icon"><i data-lucide="gem"></i></div>
+                    <span class="logo-text">황금 키워드 발굴기</span>
+                </div>
+                <a href="../../index.html" class="back-btn">
+                    <i data-lucide="arrow-left"></i> 메인으로
+                </a>
+            </header>
+
+            <section class="hero-section">
+                <div class="hero-header">
+                    <div class="hero-icon"><i data-lucide="bar-chart-3"></i></div>
+                    <h1 class="hero-title">2026년 01월 02일 15시 트렌드 분석</h1>
+                </div>
+                <div class="hero-content">현재 분석된 키워드가 없습니다.</div>
+            </section>
+
+            <section class="table-card">
+                <div class="table-header">
+                    <h2 class="table-title">
+                        <div class="table-title-icon"><i data-lucide="trophy"></i></div>
+                        황금 키워드 목록
+                    </h2>
+                    <div class="legend">
+                        <span class="legend-item"><span class="legend-dot blue"></span>블루오션</span>
+                        <span class="legend-item"><span class="legend-dot red"></span>레드오션</span>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>출처</th>
+                            <th>키워드</th>
+                            <th class="num-col">황금지수</th>
+                            <th class="num-col">경쟁강도</th>
+                            <th class="num-col">검색량</th>
+                            <th class="num-col">블로그수</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section class="review-section">
+                <h3><i data-lucide="clipboard-list"></i> 키워드 총평</h3>
+                <div class="review-content"></div>
+            </section>
+
+            <footer class="footer">
+                <p>© 2025 황금 키워드 발굴기</p>
+            </footer>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <i data-lucide="check-circle"></i>
+        <span id="toast-message">복사되었습니다</span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2500);
+        }
+
+        function copyKeyword(kw, btn) {
+            navigator.clipboard.writeText(kw).then(() => {
+                btn.classList.add('copied');
+                btn.innerHTML = '<i data-lucide="check"></i> 복사됨';
+                lucide.createIcons();
+                showToast("'" + kw + "' 복사됨");
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '<i data-lucide="copy"></i> 복사';
+                    lucide.createIcons();
+                }, 1500);
+            });
+        }
+    </script>
+</body>
+</html>

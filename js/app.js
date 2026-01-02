@@ -101,15 +101,24 @@ async function loadArchive() {
         const response = await fetch(CONFIG.api.archiveList);
         const files = await response.json();
         
+        if (!files || files.length === 0) {
+            document.getElementById('archive-list').innerHTML = '<li class="archive-item">아직 저장된 리포트가 없습니다.</li>';
+            return;
+        }
+        
         document.getElementById('archive-list').innerHTML = files.slice(0, CONFIG.archiveLimit).map(file => {
             const name = file.replace('.html', '').replace('_', '일 ').replace('h', '시');
-            // 경로 수정: output/archives/
-            return `<li class="archive-item"><a href="output/archives/${file}"><i data-lucide="file-text"></i>${name}</a></li>`;
+            // 절대 경로 사용
+            return `<li class="archive-item"><a href="./output/archives/${file}"><i data-lucide="file-text"></i>${name}</a></li>`;
         }).join('');
         
         lucide.createIcons();
-    } catch (err) { console.error(err); }
+    } catch (err) {
+        console.error('아카이브 로드 실패:', err);
+        document.getElementById('archive-list').innerHTML = '<li class="archive-item">리포트를 불러올 수 없습니다.</li>';
+    }
 }
+
 
 function initApp() {
     lucide.createIcons();
@@ -118,3 +127,35 @@ function initApp() {
 }
 
 document.addEventListener('DOMContentLoaded', initApp);
+async function loadArchive() {
+    try {
+        console.log('아카이브 로드 시작...');
+        
+        const response = await fetch(CONFIG.api.archiveList);
+        console.log('응답 상태:', response.status);
+        
+        const files = await response.json();
+        console.log('아카이브 파일 목록:', files);
+        
+        if (!files || files.length === 0) {
+            console.log('아카이브 파일 없음');
+            document.getElementById('archive-list').innerHTML = '<li>저장된 리포트가 없습니다.</li>';
+            return;
+        }
+        
+        document.getElementById('archive-list').innerHTML = files.slice(0, CONFIG.archiveLimit).map(file => {
+            const fullPath = `./output/archives/${file}`;
+            console.log('아카이브 경로:', fullPath);
+            
+            const name = file.replace('.html', '').replace('_', '일 ').replace('h', '시');
+            return `<li class="archive-item"><a href="${fullPath}"><i data-lucide="file-text"></i>${name}</a></li>`;
+        }).join('');
+        
+        lucide.createIcons();
+        console.log('아카이브 로드 완료');
+        
+    } catch (err) {
+        console.error('아카이브 로드 실패:', err);
+    }
+}
+
