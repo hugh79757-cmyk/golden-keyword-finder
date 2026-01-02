@@ -1,0 +1,10 @@
+{
+    "name": "황금 키워드 발굴기",
+    "short_name": "황금키워드",
+    "description": "블루오션 키워드를 실시간으로 발굴하세요",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#09090b",
+    "theme_color": "#09090b",
+    "icons": [{ "src": "assets/og-image.png", "sizes": "512x512", "type": "image/png" }]
+}

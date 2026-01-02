@@ -1,0 +1,36 @@
+/* ============================================
+   CSS 변수 정의
+   ============================================ */
+
+:root {
+    --bg-primary: #09090b;
+    --bg-secondary: #18181b;
+    --bg-card: #1f1f23;
+    --bg-card-hover: #27272a;
+    --border-color: #27272a;
+    --border-hover: #3f3f46;
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+    --gold: #fbbf24;
+    --gold-light: #fcd34d;
+    --diamond: #a855f7;
+    --diamond-light: #c084fc;
+    --naver: #03c75a;
+    --coupang: #e60f29;
+    --kakao: #fee500;
+    --kakao-text: #191919;
+    --blue-ocean: #22d3ee;
+    --danger: #f87171;
+    --success: #34d399;
+    --sidebar-width: 160px;
+    --content-max: 1280px;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
+    --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}

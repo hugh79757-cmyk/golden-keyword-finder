@@ -1,0 +1,34 @@
+/* ============================================
+   기본 리셋 & 공통 스타일
+   ============================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 0 var(--sidebar-width);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: var(--content-max);
+    width: 100%;
+    padding: 24px 0;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--bg-card-hover); border-radius: 3px; }
+
+.hidden { display: none !important; }
