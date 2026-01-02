@@ -4,27 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>황금 키워드 상황실</title>
-    <!-- 깔끔한 디자인 라이브러리 (Pico CSS) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <style>
-        /* 커스텀 스타일 */
         body { font-family: 'Pretendard', sans-serif; }
-        .container { max-width: 1200px; }
+        .container { max-width: 1400px; }
         
-        /* 배지 스타일 */
         .badge { padding: 4px 8px; border-radius: 6px; font-size: 0.75em; font-weight: bold; color: white; vertical-align: middle; }
         .badge-naver { background-color: #03C75A; }
         .badge-coupang { background-color: #E60F29; }
         
-        /* 등급 스타일 */
-        .grade-dia { color: #9C27B0; font-weight: 900; } /* 다이아몬드 */
-        .grade-gold { color: #FF9800; font-weight: 800; } /* 골드 */
-        .grade-silver { color: #607D8B; font-weight: 700; } /* 실버 */
+        .grade-dia { color: #9C27B0; font-weight: 900; } 
+        .grade-gold { color: #FF9800; font-weight: 800; } 
+        .grade-silver { color: #607D8B; font-weight: 700; } 
+        .grade-bad { color: #999; font-size: 0.9em; }
+
+        .eff-good { color: #2e7d32; font-weight: bold; }
+        .eff-bad { color: #d32f2f; } 
         
-        /* 테이블 스타일 */
-        th { font-weight: bold; color: #333; background-color: #f4f4f4; white-space: nowrap; }
-        td { vertical-align: middle; }
-        .num-col { text-align: right; } /* 숫자는 오른쪽 정렬 */
+        th { font-weight: bold; color: #333; background-color: #f4f4f4; white-space: nowrap; font-size: 0.9em; }
+        td { vertical-align: middle; font-size: 0.95em; }
+        .num-col { text-align: right; }
     </style>
 </head>
 <body>
@@ -40,25 +39,26 @@
 
         <article>
             <p>
-                <strong>정렬 기준:</strong> 황금지수(가치)가 높은 순서대로 보여줍니다.<br>
-                <small>* 쇼핑순위가 낮아도 검색량이 많고 경쟁이 적으면 상단에 뜹니다.</small>
+                <strong>💡 경쟁 강도(경쟁률):</strong> 블로그 수 ÷ 검색량<br>
+                <small>* 수치가 <strong>1.0 미만(🔥)</strong>이면 글이 부족한 '블루오션'입니다. (낮을수록 좋음)</small>
             </p>
             
             <figure>
                 <table role="grid">
                     <thead>
                         <tr>
-                            <th scope="col" style="width: 10%;">출처</th>
-                            <th scope="col" style="width: 10%;">쇼핑순위</th>
+                            <th scope="col" style="width: 8%;">출처</th>
+                            <th scope="col" style="width: 8%;">순위</th>
                             <th scope="col">키워드</th>
                             <th scope="col" class="num-col">황금지수</th>
+                            <th scope="col" class="num-col">경쟁강도 (경쟁률)</th>
                             <th scope="col" class="num-col">월간 검색량</th>
                             <th scope="col" class="num-col">광고단가(CPC)</th>
-                            <th scope="col" class="num-col">블로그 경쟁수</th>
+                            <th scope="col" class="num-col">블로그 수</th>
                         </tr>
                     </thead>
                     <tbody id="keyword-list">
-                        <tr><td colspan="7">데이터를 불러오는 중입니다...</td></tr>
+                        <tr><td colspan="8">데이터를 불러오는 중입니다...</td></tr>
                     </tbody>
                 </table>
             </figure>
@@ -72,41 +72,49 @@
                 const tbody = document.getElementById('keyword-list');
                 const timeLabel = document.getElementById('update-time');
                 
-                // 업데이트 시간 표시
                 timeLabel.innerText = "최종 분석: " + new Date().toLocaleString();
-                
-                // 기존 로딩 메시지 삭제
                 tbody.innerHTML = '';
 
                 data.forEach(item => {
                     const tr = document.createElement('tr');
                     
-                    // 배지 색상
                     let badgeClass = item.source === 'COUPANG' ? 'badge-coupang' : 'badge-naver';
                     
-                    // 등급별 스타일
-                    let scoreHtml = `<span style="color:#aaa;">${item.golden_score}점</span>`;
+                    let scoreHtml = `<span class="grade-bad">${item.golden_score}점</span>`;
                     if (item.grade.includes("DIAMOND")) scoreHtml = `<span class="grade-dia">💎 ${item.golden_score}점</span>`;
                     else if (item.grade.includes("GOLD")) scoreHtml = `<span class="grade-gold">🌟 ${item.golden_score}점</span>`;
                     else if (item.grade.includes("SILVER")) scoreHtml = `<span class="grade-silver">✨ ${item.golden_score}점</span>`;
 
+                    let comp = item.efficiency;
+                    if (!comp) comp = (item.blog_count / (item.search_volume || 1)).toFixed(2);
+                    
+                    let effClass = '';
+                    let effIcon = '';
+                    
+                    if (comp < 1.0) { effClass = 'eff-good'; effIcon = '🔥'; }
+                    else if (comp > 5.0) { effClass = 'eff-bad'; effIcon = '💧'; }
+
                     tr.innerHTML = `
                         <td><span class="badge ${badgeClass}">${item.source}</span></td>
-                        <td>${item.rank}위</td>
+                        <td>${item.rank}</td>
                         <td>
-                            <strong>${item.keyword}</strong>
+                            <strong>${item.keyword}</strong><br>
+                            <small style="color:#666;">${item.grade}</small>
                         </td>
                         <td class="num-col">${scoreHtml}</td>
-                        <td class="num-col"><strong>${item.search_volume.toLocaleString()}</strong> 건</td>
-                        <td class="num-col">${item.cpc.toLocaleString()} 원</td>
-                        <td class="num-col">${item.blog_count.toLocaleString()} 개</td>
+                        <td class="num-col ${effClass}">
+                            ${effIcon} ${comp}
+                        </td>
+                        <td class="num-col"><strong>${item.search_volume.toLocaleString()}</strong></td>
+                        <td class="num-col">${item.cpc.toLocaleString()}</td>
+                        <td class="num-col">${item.blog_count.toLocaleString()}</td>
                     `;
                     tbody.appendChild(tr);
                 });
             })
             .catch(err => {
                 console.error(err);
-                document.getElementById('keyword-list').innerHTML = "<tr><td colspan='7'>데이터 로딩 실패</td></tr>";
+                tbody.innerHTML = "<tr><td colspan='8'>데이터 로딩 실패</td></tr>";
             });
     </script>
 </body>
