@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-01-02T17:58:21.673877+09:00",
+  "generated_at": "2026-01-02T18:44:49.234817+09:00",
   "seo_summary": "2026년 01월 02일 기준 네이버와 쿠팡의 실시간 트렌드를 분석한 결과, \n총 14개의 키워드 중 가장 주목할 만한 황금 키워드는 '닌텐도 스위치 2'입니다. \n\n이 키워드는 월간 검색량 342,900건을 기록하며 높은 관심도를 보이고 있으며, \n경쟁강도 0.11로 매우 낮은 경쟁률을 보이는 블루오션으로 분석됩니다. \n\n현재 다이아몬드 등급 키워드 3개, 골드 등급 0개가 발견되었으며, \n블루오션 키워드는 총 2개로 확인되었습니다. \n\n블로거와 마케터, 온라인 셀러라면 지금이 이 키워드를 선점할 최적의 타이밍입니다.",
-  "keyword_review": "오늘의 키워드 총평\n\n높은 가치의 다이아몬드 등급 키워드가 발견되어 긍정적인 시장 상황입니다.\n\n📊 주요 지표\n• 분석 키워드: 총 14개\n• 평균 검색량: 25,214건\n• 평균 경쟁강도: 15.62\n• 블루오션 키워드: 2개\n• 레드오션 키워드: 10개\n\n🏆 주목할 키워드\n닌텐도 스위치 2, 닌텐도 스위치 2인용 게임, 크리넥스 데코앤소프트, 닌텐도 스위치 2 화면 안켜짐, 테팔 인덕션 티타늄 1X\n\n🔥 블루오션 추천\n닌텐도 스위치 2, 닌텐도 스위치 2인용 게임\n\n💡 전략 제안\n다이아몬드 키워드를 중심으로 콘텐츠 전략을 수립하시기 바랍니다.",
+  "keyword_review": "오늘의 키워드 총평\n\n높은 가치의 다이아몬드 등급 키워드가 발견되어 긍정적인 시장 상황입니다.\n\n📊 주요 지표\n• 분석 키워드: 총 14개\n• 평균 검색량: 25,214건\n• 평균 경쟁강도: 15.63\n• 블루오션 키워드: 2개\n• 레드오션 키워드: 10개\n\n🏆 주목할 키워드\n닌텐도 스위치 2, 닌텐도 스위치 2인용 게임, 크리넥스 데코앤소프트, 닌텐도 스위치 2 화면 안켜짐, 테팔 인덕션 티타늄 1X\n\n🔥 블루오션 추천\n닌텐도 스위치 2, 닌텐도 스위치 2인용 게임\n\n💡 전략 제안\n다이아몬드 키워드를 중심으로 콘텐츠 전략을 수립하시기 바랍니다.",
   "keywords": [
     {
       "keyword": "닌텐도 스위치 2",
@@ -9,7 +9,7 @@
       "golden_score": 70,
       "grade": "💎 DIAMOND",
       "search_volume": 342900,
-      "blog_count": 37947,
+      "blog_count": 37952,
       "efficiency": 0.11
     },
     {
@@ -27,7 +27,7 @@
       "golden_score": 60.7,
       "grade": "💎 DIAMOND",
       "search_volume": 3820,
-      "blog_count": 3929,
+      "blog_count": 3934,
       "efficiency": 1.03
     },
     {
@@ -36,8 +36,8 @@
       "golden_score": 19.9,
       "grade": "Normal",
       "search_volume": 810,
-      "blog_count": 2708,
-      "efficiency": 3.34
+      "blog_count": 2710,
+      "efficiency": 3.35
     },
     {
       "keyword": "테팔 인덕션 티타늄 1X",
@@ -45,8 +45,8 @@
       "golden_score": 17.8,
       "grade": "Normal",
       "search_volume": 460,
-      "blog_count": 2637,
-      "efficiency": 5.73
+      "blog_count": 2644,
+      "efficiency": 5.75
     },
     {
       "keyword": "풀커버 범퍼 충격보호",
@@ -54,7 +54,7 @@
       "golden_score": 17.5,
       "grade": "Normal",
       "search_volume": 410,
-      "blog_count": 3673,
+      "blog_count": 3675,
       "efficiency": 8.96
     },
     {
@@ -63,17 +63,8 @@
       "golden_score": 16.4,
       "grade": "Normal",
       "search_volume": 230,
-      "blog_count": 4984,
-      "efficiency": 21.67
-    },
-    {
-      "keyword": "생폰 맥세이프 슬림",
-      "source": "NAVER",
-      "golden_score": 15.8,
-      "grade": "Normal",
-      "search_volume": 140,
-      "blog_count": 1534,
-      "efficiency": 10.96
+      "blog_count": 4990,
+      "efficiency": 21.7
     },
     {
       "keyword": "스테나 STN 100",
@@ -85,13 +76,22 @@
       "efficiency": 16.28
     },
     {
+      "keyword": "생폰 맥세이프 슬림",
+      "source": "NAVER",
+      "golden_score": 15.8,
+      "grade": "Normal",
+      "search_volume": 140,
+      "blog_count": 1534,
+      "efficiency": 10.96
+    },
+    {
       "keyword": "테팔 인덕션 티타늄",
       "source": "COUPANG",
       "golden_score": 7.5,
       "grade": "Normal",
       "search_volume": 410,
-      "blog_count": 8038,
-      "efficiency": 19.6
+      "blog_count": 8047,
+      "efficiency": 19.63
     },
     {
       "keyword": "크리넥스 데코앤소프트 30롤",
@@ -99,8 +99,8 @@
       "golden_score": 6.6,
       "grade": "Normal",
       "search_volume": 270,
-      "blog_count": 5837,
-      "efficiency": 21.62
+      "blog_count": 5841,
+      "efficiency": 21.63
     },
     {
       "keyword": "풀커버 범퍼 충격보호 하이브리드",
@@ -108,7 +108,7 @@
       "golden_score": 3.7,
       "grade": "Normal",
       "search_volume": 620,
-      "blog_count": 10018,
+      "blog_count": 10020,
       "efficiency": 16.16
     },
     {
@@ -117,8 +117,8 @@
       "golden_score": 3.1,
       "grade": "Normal",
       "search_volume": 510,
-      "blog_count": 12941,
-      "efficiency": 25.37
+      "blog_count": 12942,
+      "efficiency": 25.38
     },
     {
       "keyword": "생폰 맥세이프 슬림 케이스",
@@ -126,8 +126,8 @@
       "golden_score": 2.5,
       "grade": "Normal",
       "search_volume": 410,
-      "blog_count": 27557,
-      "efficiency": 67.21
+      "blog_count": 27564,
+      "efficiency": 67.23
     }
   ]
 }
