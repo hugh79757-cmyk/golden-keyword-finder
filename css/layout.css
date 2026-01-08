@@ -227,3 +227,102 @@
 
 .footer-social { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
 .footer-sub { margin-top: 6px; font-size: 0.7rem; }
+
+/* 키워드 테이블 */
+.keyword-table { width: 100%; border-collapse: collapse; }
+
+.keyword-table th {
+    background: rgba(255,255,255,0.02);
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.keyword-table td { padding: 16px 20px; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
+.keyword-table tbody tr { transition: var(--transition); }
+.keyword-table tbody tr:hover { background: var(--bg-card-hover); }
+.keyword-table tbody tr:last-child td { border-bottom: none; }
+
+.source-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.source-naver { background: var(--naver); color: white; }
+.source-coupang { background: var(--coupang); color: white; }
+
+.keyword-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.keyword-text {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.keyword-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.btn-icon:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+}
+
+.btn-icon svg { width: 14px; height: 14px; }
+
+.grade-badge {
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.grade-diamond { background: rgba(168,85,247,0.2); color: var(--diamond-light); }
+.grade-gold { background: rgba(251,191,36,0.2); color: var(--gold); }
+.grade-silver { background: rgba(156,163,175,0.2); color: var(--text-secondary); }
+.grade-bad { background: rgba(107,114,128,0.2); color: var(--text-muted); }
+
+.score-badge {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.efficiency-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+}
+
+.efficiency-badge svg { width: 14px; height: 14px; }
+.eff-good { color: var(--blue-ocean); }
+.eff-bad { color: var(--danger); }
