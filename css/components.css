@@ -307,3 +307,24 @@
         margin: 1rem 0;
     }
 }
+
+/* 정렬 가능한 헤더 스타일 */
+.keyword-table thead th[data-column] {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+.keyword-table thead th[data-column]:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sort-icon {
+    margin-left: 4px;
+    opacity: 0.5;
+}
+
+.keyword-table thead th[data-column]:hover .sort-icon {
+    opacity: 1;
+}
+

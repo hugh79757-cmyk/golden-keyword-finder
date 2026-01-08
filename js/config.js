@@ -10,6 +10,12 @@ const CONFIG = {
         archiveList: 'output/archive_list.json',
         archivePath: 'output/archives/'
     },
+    ads: {
+        enabled: true,
+        client: 'ca-pub-6677996696534146',
+        slot: '7736105857',
+        interval: 5
+    },
     kakao: {
         appKey: 'YOUR_KAKAO_JAVASCRIPT_KEY',
         enabled: false

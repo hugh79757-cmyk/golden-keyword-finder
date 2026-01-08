@@ -1,4 +1,7 @@
-// js/app.js - 메인 앱 로직 (광고 삽입 포함)
+// js/app.js - 메인 앱 로직 (광고 삽입 + 정렬 기능)
+
+let currentKeywords = []; // 전역 데이터 저장
+let currentSort = { column: null, ascending: true };
 
 document.addEventListener('DOMContentLoaded', function() {
     loadData();
@@ -11,6 +14,7 @@ async function loadData() {
         if (!response.ok) throw new Error('데이터를 불러올 수 없습니다');
         
         const data = await response.json();
+        currentKeywords = data.keywords || [];
         renderDashboard(data);
         
         // ✅ 데이터 로드 완료 후 광고 초기화
@@ -45,8 +49,11 @@ function renderDashboard(data) {
     // 통계 카드 업데이트
     updateStatsCards(data.keywords);
     
+    // 테이블 헤더에 정렬 기능 추가
+    setupSortableHeaders();
+    
     // 키워드 테이블 렌더링 (광고 포함)
-    renderKeywordTable(data.keywords);
+    renderKeywordTable(currentKeywords);
 }
 
 function updateStatsCards(keywords) {
@@ -68,24 +75,85 @@ function updateStatsCards(keywords) {
     if (statSources) statSources.textContent = sourceCount;
 }
 
+// ✅ 정렬 가능한 헤더 설정
+function setupSortableHeaders() {
+    const headers = document.querySelectorAll('.keyword-table thead th');
+    const sortableColumns = {
+        3: 'golden_score',   // 황금지수
+        4: 'efficiency',     // 경쟁강도
+        5: 'search_volume',  // 월간검색량
+        6: 'blog_count'      // 블로그수
+    };
+    
+    headers.forEach((th, index) => {
+        if (sortableColumns[index]) {
+            th.style.cursor = 'pointer';
+            th.dataset.column = sortableColumns[index];
+            th.innerHTML += ' <span class="sort-icon">↕</span>';
+            
+            th.addEventListener('click', () => {
+                sortTable(sortableColumns[index], th);
+            });
+        }
+    });
+}
+
+// ✅ 테이블 정렬 함수
+function sortTable(column, headerElement) {
+    // 같은 컬럼 클릭 시 방향 전환
+    if (currentSort.column === column) {
+        currentSort.ascending = !currentSort.ascending;
+    } else {
+        currentSort.column = column;
+        currentSort.ascending = false; // 기본 내림차순
+    }
+    
+    // 정렬 실행
+    currentKeywords.sort((a, b) => {
+        let valA = a[column] ?? 0;
+        let valB = b[column] ?? 0;
+        
+        if (currentSort.ascending) {
+            return valA - valB;
+        } else {
+            return valB - valA;
+        }
+    });
+    
+    // 정렬 아이콘 업데이트
+    document.querySelectorAll('.keyword-table thead th .sort-icon').forEach(icon => {
+        icon.textContent = '↕';
+    });
+    const sortIcon = headerElement.querySelector('.sort-icon');
+    if (sortIcon) {
+        sortIcon.textContent = currentSort.ascending ? '↑' : '↓';
+    }
+    
+    // 테이블 다시 렌더링
+    renderKeywordTable(currentKeywords);
+}
+
 // ✅ 키워드 테이블 렌더링 (광고 삽입 포함)
 function renderKeywordTable(keywords) {
     const tbody = document.getElementById('keyword-table-body');
     if (!tbody || !keywords) return;
     
     let html = '';
-    const adInterval = CONFIG.ads.interval || 5; // 기본 5개마다 광고
+    const adInterval = CONFIG.ads.interval || 5;
     
     keywords.forEach((item, index) => {
-        // ✅ 일정 간격마다 광고 행 삽입
         if (index > 0 && index % adInterval === 0) {
             html += AdsManager.createTableAdRow(7);
         }
-        
         html += createKeywordRow(item);
     });
     
     tbody.innerHTML = html;
+    
+    // 아이콘 재초기화
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
 }
 
 function createKeywordRow(item) {
@@ -132,8 +200,6 @@ function createKeywordRow(item) {
     `;
 }
 
-// ... 나머지 함수들 (getGradeClass, loadArchiveList 등)
-
 function getGradeClass(grade) {
     if (!grade) return 'grade-bad';
     if (grade.includes('DIAMOND')) return 'grade-diamond';
@@ -175,7 +241,6 @@ function renderArchiveList(files) {
     
     container.innerHTML = html;
     
-    // 아이콘 재초기화
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
