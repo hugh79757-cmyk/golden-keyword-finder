@@ -3,29 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>황금 키워드 발굴기 - 블루오션 키워드 분석</title>
+    <title>황금 키워드 발굴기 | 실시간 블루오션 키워드 분석</title>
     
-    <!-- SEO 메타 태그 -->
-    <meta name="description" content="네이버와 쿠팡의 실시간 트렌드를 분석하여 블루오션 황금 키워드를 발굴합니다. 검색량 대비 경쟁이 낮은 키워드를 찾아보세요.">
-    <link rel="canonical" href="https://golden-keyword-finder.pages.dev/">
+    <meta name="description" content="네이버와 쿠팡의 실시간 트렌드를 분석하여 블루오션 황금 키워드를 발굴합니다.">
+    <link rel="canonical" href="https://6.informationhot.kr/">
     
-    <!-- Open Graph -->
     <meta property="og:title" content="황금 키워드 발굴기">
     <meta property="og:description" content="실시간 트렌드 분석으로 블루오션 키워드를 발굴하세요">
-    <meta property="og:image" content="https://golden-keyword-finder.pages.dev/assets/og-image.png">
-    <meta property="og:url" content="https://golden-keyword-finder.pages.dev/">
+    <meta property="og:url" content="https://6.informationhot.kr/">
     
-    <!-- 폰트 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-    
-    <!-- 아이콘 -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- ✅ AdSense 스크립트 (head에 한 번만) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6677996696534146"
-         crossorigin="anonymous"></script>
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6677996696534146" crossorigin="anonymous"></script>
     
-    <!-- CSS -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
@@ -33,138 +25,153 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <!-- 사이드 광고 (데스크톱) -->
-    <aside class="ad-container ad-side ad-left">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-6677996696534146"
-             data-ad-slot="7736105857"
-             data-ad-format="vertical"
-             data-full-width-responsive="false"></ins>
-    </aside>
-    
-    <aside class="ad-container ad-side ad-right">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-6677996696534146"
-             data-ad-slot="7736105857"
-             data-ad-format="vertical"
-             data-full-width-responsive="false"></ins>
-    </aside>
+    <div class="main-wrapper" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        
+        <!-- 히어로 섹션 -->
+        <section class="hero-section">
+            <h1 style="display: flex; align-items: center; gap: 12px; font-size: 1.8rem; margin-bottom: 12px;">
+                <i data-lucide="gem"></i> 황금 키워드 발굴기
+            </h1>
+            <p id="seo-summary" style="color: var(--text-secondary); line-height: 1.8;">데이터를 불러오는 중...</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 12px;">
+                마지막 업데이트: <span id="update-time">-</span>
+            </p>
+        </section>
 
-    <div class="main-wrapper">
-        <header class="site-header">
-            <!-- 헤더 내용 -->
-        </header>
+        <!-- 상단 광고 -->
+        <div class="ad-container ad-inline" style="margin: 20px 0;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6677996696534146"
+                 data-ad-slot="5773917801"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
 
-        <main class="main-content">
-            <!-- 히어로 섹션 -->
-            <section class="hero-section">
-                <h1><i data-lucide="gem"></i> 황금 키워드 발굴기</h1>
-                <p id="seo-summary">데이터를 불러오는 중...</p>
-                <p class="update-time">마지막 업데이트: <span id="update-time">-</span></p>
-            </section>
-
-            <!-- ✅ 상단 광고 (히어로 아래) -->
-            <div class="ad-container ad-inline">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-6677996696534146"
-                     data-ad-slot="7736105857"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-            </div>
-
-            <!-- 통계 카드 -->
-            <section class="stats-grid">
-                <article class="stat-card">
-                    <i data-lucide="trending-up"></i>
+        <!-- 통계 카드 -->
+        <section class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 28px;">
+            <article class="stat-card">
+                <div class="stat-icon purple"><i data-lucide="trending-up"></i></div>
+                <div class="stat-info">
                     <div class="stat-value" id="stat-total">-</div>
                     <div class="stat-label">분석된 키워드</div>
-                </article>
-                <!-- 나머지 카드들... -->
-            </section>
-
-            <!-- 키워드 테이블 (내부에 광고 자동 삽입) -->
-            <section class="keyword-section">
-                <h2><i data-lucide="list"></i> 실시간 황금 키워드 랭킹</h2>
-                <div class="table-container">
-                    <table class="keyword-table">
-                        <thead>
-                            <tr>
-                                <th>출처</th>
-                                <th>키워드</th>
-                                <th>등급</th>
-                                <th>황금지수</th>
-                                <th>경쟁강도</th>
-                                <th>월간검색량</th>
-                                <th>블로그수</th>
-                            </tr>
-                        </thead>
-                        <tbody id="keyword-table-body">
-                            <!-- JS로 동적 생성 + 광고 삽입 -->
-                        </tbody>
-                    </table>
                 </div>
-            </section>
+            </article>
+            <article class="stat-card">
+                <div class="stat-icon gold"><i data-lucide="gem"></i></div>
+                <div class="stat-info">
+                    <div class="stat-value" id="stat-diamond">-</div>
+                    <div class="stat-label">다이아몬드 등급</div>
+                </div>
+            </article>
+            <article class="stat-card">
+                <div class="stat-icon cyan"><i data-lucide="droplet"></i></div>
+                <div class="stat-info">
+                    <div class="stat-value" id="stat-blueocean">-</div>
+                    <div class="stat-label">블루오션 키워드</div>
+                </div>
+            </article>
+            <article class="stat-card">
+                <div class="stat-icon green"><i data-lucide="database"></i></div>
+                <div class="stat-info">
+                    <div class="stat-value" id="stat-sources">-</div>
+                    <div class="stat-label">데이터 소스</div>
+                </div>
+            </article>
+        </section>
 
-            <!-- ✅ 중간 광고 (테이블 아래) -->
-            <div class="ad-container ad-inline">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-6677996696534146"
-                     data-ad-slot="7736105857"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
+        <!-- 키워드 테이블 -->
+        <section class="table-card">
+            <div class="table-header">
+                <h2 class="table-title">
+                    <div class="table-title-icon"><i data-lucide="list"></i></div>
+                    실시간 황금 키워드 랭킹
+                </h2>
+                <div class="legend">
+                    <span class="legend-item"><span class="legend-dot blue"></span> 블루오션 (경쟁 < 1.0)</span>
+                    <span class="legend-item"><span class="legend-dot red"></span> 레드오션 (경쟁 > 5.0)</span>
+                </div>
             </div>
-
-            <!-- 키워드 총평 -->
-            <section class="review-section">
-                <h2><i data-lucide="message-square"></i> 오늘의 키워드 총평</h2>
-                <p id="keyword-review">분석 결과를 불러오는 중...</p>
-            </section>
-
-            <!-- 아카이브 -->
-            <section class="archive-section">
-                <h2><i data-lucide="folder"></i> 지난 분석 리포트</h2>
-                <ul id="archive-list" class="archive-list">
-                    <li>불러오는 중...</li>
-                </ul>
-            </section>
-
-            <!-- ✅ 하단 광고 -->
-            <div class="ad-container ad-inline">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-6677996696534146"
-                     data-ad-slot="7736105857"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
+            <div style="overflow-x: auto;">
+                <table class="keyword-table">
+                    <thead>
+                        <tr>
+                            <th>출처</th>
+                            <th>순위</th>
+                            <th>키워드</th>
+                            <th>황금지수</th>
+                            <th>경쟁강도</th>
+                            <th>월간검색량</th>
+                            <th>블로그수</th>
+                        </tr>
+                    </thead>
+                    <tbody id="keyword-table-body">
+                        <tr><td colspan="7" style="text-align: center; padding: 40px;">데이터를 불러오는 중...</td></tr>
+                    </tbody>
+                </table>
             </div>
-        </main>
+        </section>
 
-        <footer class="site-footer">
-            <!-- 푸터 내용 -->
+        <!-- 중간 광고 -->
+        <div class="ad-container ad-inline" style="margin: 20px 0;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6677996696534146"
+                 data-ad-slot="5773917801"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- 키워드 총평 -->
+        <section class="review-section">
+            <h3><i data-lucide="message-square"></i> 오늘의 키워드 총평</h3>
+            <div class="review-content" id="keyword-review">분석 결과를 불러오는 중...</div>
+        </section>
+
+        <!-- 하단 광고 -->
+        <div class="ad-container ad-inline" style="margin: 20px 0;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6677996696534146"
+                 data-ad-slot="5773917801"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- 아카이브 -->
+        <section class="archive-section">
+            <div class="archive-header">
+                <div class="archive-icon"><i data-lucide="folder"></i></div>
+                <h3 class="archive-title">지난 분석 리포트</h3>
+            </div>
+            <ul id="archive-list" class="archive-grid">
+                <li>로딩 중...</li>
+            </ul>
+        </section>
+
+        <!-- 푸터 -->
+        <footer class="footer">
+            <p>© 2026 황금 키워드 발굴기. All rights reserved.</p>
         </footer>
+
     </div>
 
-    <!-- JS 파일 -->
+    <!-- Toast -->
+    <div id="toast" class="toast">
+        <i data-lucide="check-circle"></i>
+        <span id="toast-message"></span>
+    </div>
+
     <script src="js/config.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/ads.js"></script>
-    <script src="js/modal.js"></script>
-    <script src="js/share.js"></script>
     <script src="js/app.js"></script>
     
-    <!-- ✅ 광고 초기화 (마지막에) -->
     <script>
-        // 아이콘 초기화
         lucide.createIcons();
-        
-        // 광고 초기화 (페이지 로드 완료 후)
-        window.addEventListener('load', function() {
-            AdsManager.initAllAds();
-        });
     </script>
 </body>
 </html>
