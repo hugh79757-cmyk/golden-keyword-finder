@@ -35,25 +35,32 @@ async function copyKeyword(keyword, btn) {
     const success = await copyToClipboard(keyword);
     
     if (success) {
-        btn.classList.add('copied');
-        btn.innerHTML = '<i data-lucide="check"></i> 복사됨';
-        lucide.createIcons();
+        if (btn) {
+            btn.classList.add('copied');
+            btn.innerHTML = '<i data-lucide="check"></i> 복사됨';
+            lucide.createIcons();
+        }
         showToast(`'${keyword}' 클립보드에 복사됨`);
         
         setTimeout(() => {
-            btn.classList.remove('copied');
-            btn.innerHTML = '<i data-lucide="copy"></i> 복사';
-            lucide.createIcons();
+            if (btn) {
+                btn.classList.remove('copied');
+                btn.innerHTML = '<i data-lucide="copy"></i> 복사';
+                lucide.createIcons();
+            }
         }, 1500);
     }
 }
 
 function formatNumber(num) {
+    if (num === null || num === undefined) return '-';
     return num.toLocaleString('ko-KR');
 }
 
-function formatDate(date = new Date()) {
-    return date.toLocaleDateString('ko-KR');
+function formatDate(dateStr) {
+    if (!dateStr) return '-';
+    const date = new Date(dateStr);
+    return date.toLocaleString('ko-KR');
 }
 
 function formatDateTime(date = new Date()) {
