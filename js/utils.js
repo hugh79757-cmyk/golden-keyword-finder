@@ -59,8 +59,12 @@ function formatNumber(num) {
 
 function formatDate(dateStr) {
     if (!dateStr) return '-';
-    const date = new Date(dateStr);
-    return date.toLocaleString('ko-KR');
+    try {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('ko-KR') + ' ' + date.toLocaleTimeString('ko-KR');
+    } catch (e) {
+        return dateStr;
+    }
 }
 
 function formatDateTime(date = new Date()) {
