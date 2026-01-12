@@ -1,24 +1,14 @@
 {
-  "generated_at": "2026-01-12T18:57:41.264167+09:00",
-  "seo_summary": "2026년 01월 12일 기준, 네이버와 쿠팡의 실시간 트렌드를 분석한 결과 총 24개의 키워드 중 다이아몬드 등급 6개, 블루오션 키워드 8개를 발굴했습니다. 오늘의 1위 황금 키워드는 '뉴발란스 530'로, 월간 검색량 478,867건에 경쟁강도 0.08으로 블루오션 시장입니다.",
-  "keyword_review": "💎 다이아몬드 등급 키워드: 뉴발란스 530, 닌텐도 스위치 2, 갤럭시 S25 외 3개\n\n🌟 골드 등급 키워드: 샤넬 가방, 맥북 프로 \n\n🔥 블루오션 키워드(경쟁강도 1.0 미만): 뉴발란스 530, 닌텐도 스위치 2, 갤럭시 S25, 다이슨 에어랩, 나이키 덩크\n\n\n📌 추천 전략: 다이아몬드/골드 등급 키워드 중 블루오션인 키워드를 우선적으로 콘텐츠 제작에 활용하시면 검색 노출 효과를 극대화할 수 있습니다.",
+  "generated_at": "2026-01-13T08:30:48.877051+09:00",
+  "seo_summary": "2026년 01월 13일 기준, 네이버와 쿠팡의 실시간 트렌드를 분석한 결과 총 24개의 키워드 중 다이아몬드 등급 6개, 블루오션 키워드 9개를 발굴했습니다. 오늘의 1위 황금 키워드는 '닌텐도 스위치 2'로, 월간 검색량 223,986건에 경쟁강도 0.18으로 블루오션 시장입니다.",
+  "keyword_review": "💎 다이아몬드 등급 키워드: 닌텐도 스위치 2, 갤럭시 S25, 다이슨 에어랩 외 3개\n\n🌟 골드 등급 키워드: 샤넬 가방, 아이패드 프로, 맥북 프로 \n\n🔥 블루오션 키워드(경쟁강도 1.0 미만): 닌텐도 스위치 2, 갤럭시 S25, 다이슨 에어랩, 나이키 덩크, 뉴발란스 530\n\n\n📌 추천 전략: 다이아몬드/골드 등급 키워드 중 블루오션인 키워드를 우선적으로 콘텐츠 제작에 활용하시면 검색 노출 효과를 극대화할 수 있습니다.",
   "keywords": [
-    {
-      "keyword": "뉴발란스 530",
-      "source": "NAVER",
-      "search_volume": 478867,
-      "blog_count": 38090,
-      "efficiency": 0.08,
-      "golden_score": 100,
-      "grade": "💎 DIAMOND",
-      "related_keywords": []
-    },
     {
       "keyword": "닌텐도 스위치 2",
       "source": "NAVER",
-      "search_volume": 284719,
-      "blog_count": 39160,
-      "efficiency": 0.14,
+      "search_volume": 223986,
+      "blog_count": 39211,
+      "efficiency": 0.18,
       "golden_score": 80,
       "grade": "💎 DIAMOND",
       "related_keywords": []
@@ -26,9 +16,9 @@
     {
       "keyword": "갤럭시 S25",
       "source": "NAVER",
-      "search_volume": 495942,
-      "blog_count": 168542,
-      "efficiency": 0.34,
+      "search_volume": 445896,
+      "blog_count": 168819,
+      "efficiency": 0.38,
       "golden_score": 80,
       "grade": "💎 DIAMOND",
       "related_keywords": []
@@ -36,9 +26,9 @@
     {
       "keyword": "다이슨 에어랩",
       "source": "NAVER",
-      "search_volume": 438052,
-      "blog_count": 106022,
-      "efficiency": 0.24,
+      "search_volume": 457665,
+      "blog_count": 106039,
+      "efficiency": 0.23,
       "golden_score": 80,
       "grade": "💎 DIAMOND",
       "related_keywords": []
@@ -46,9 +36,19 @@
     {
       "keyword": "나이키 덩크",
       "source": "NAVER",
-      "search_volume": 470967,
-      "blog_count": 96843,
-      "efficiency": 0.21,
+      "search_volume": 332128,
+      "blog_count": 96849,
+      "efficiency": 0.29,
+      "golden_score": 80,
+      "grade": "💎 DIAMOND",
+      "related_keywords": []
+    },
+    {
+      "keyword": "뉴발란스 530",
+      "source": "NAVER",
+      "search_volume": 315932,
+      "blog_count": 38090,
+      "efficiency": 0.12,
       "golden_score": 80,
       "grade": "💎 DIAMOND",
       "related_keywords": []
@@ -56,9 +56,9 @@
     {
       "keyword": "런닝화",
       "source": "COUPANG",
-      "search_volume": 453308,
-      "blog_count": 215170,
-      "efficiency": 0.47,
+      "search_volume": 446221,
+      "blog_count": 215241,
+      "efficiency": 0.48,
       "golden_score": 80,
       "grade": "💎 DIAMOND",
       "related_keywords": []
@@ -66,9 +66,19 @@
     {
       "keyword": "샤넬 가방",
       "source": "NAVER",
-      "search_volume": 473412,
-      "blog_count": 369073,
-      "efficiency": 0.78,
+      "search_volume": 396435,
+      "blog_count": 369169,
+      "efficiency": 0.93,
+      "golden_score": 60,
+      "grade": "🌟 GOLD",
+      "related_keywords": []
+    },
+    {
+      "keyword": "아이패드 프로",
+      "source": "NAVER",
+      "search_volume": 478688,
+      "blog_count": 448880,
+      "efficiency": 0.94,
       "golden_score": 60,
       "grade": "🌟 GOLD",
       "related_keywords": []
@@ -76,29 +86,39 @@
     {
       "keyword": "맥북 프로",
       "source": "NAVER",
-      "search_volume": 360947,
-      "blog_count": 288650,
-      "efficiency": 0.8,
+      "search_volume": 350555,
+      "blog_count": 288739,
+      "efficiency": 0.82,
       "golden_score": 60,
       "grade": "🌟 GOLD",
       "related_keywords": []
     },
     {
-      "keyword": "에어팟 프로",
+      "keyword": "아이폰 16",
       "source": "NAVER",
-      "search_volume": 253798,
-      "blog_count": 285959,
-      "efficiency": 1.13,
+      "search_volume": 426196,
+      "blog_count": 522742,
+      "efficiency": 1.23,
       "golden_score": 40,
       "grade": "✨ SILVER",
       "related_keywords": []
     },
     {
-      "keyword": "아이패드 프로",
+      "keyword": "에어팟 프로",
       "source": "NAVER",
-      "search_volume": 382403,
-      "blog_count": 448758,
-      "efficiency": 1.17,
+      "search_volume": 192719,
+      "blog_count": 286009,
+      "efficiency": 1.48,
+      "golden_score": 40,
+      "grade": "✨ SILVER",
+      "related_keywords": []
+    },
+    {
+      "keyword": "애플워치",
+      "source": "NAVER",
+      "search_volume": 304979,
+      "blog_count": 799520,
+      "efficiency": 2.62,
       "golden_score": 40,
       "grade": "✨ SILVER",
       "related_keywords": []
@@ -106,9 +126,9 @@
     {
       "keyword": "로봇청소기",
       "source": "COUPANG",
-      "search_volume": 389506,
-      "blog_count": 557422,
-      "efficiency": 1.43,
+      "search_volume": 470280,
+      "blog_count": 557741,
+      "efficiency": 1.19,
       "golden_score": 40,
       "grade": "✨ SILVER",
       "related_keywords": []
@@ -116,9 +136,19 @@
     {
       "keyword": "무선청소기",
       "source": "COUPANG",
-      "search_volume": 455150,
-      "blog_count": 462528,
-      "efficiency": 1.02,
+      "search_volume": 424979,
+      "blog_count": 462945,
+      "efficiency": 1.09,
+      "golden_score": 40,
+      "grade": "✨ SILVER",
+      "related_keywords": []
+    },
+    {
+      "keyword": "믹서기",
+      "source": "COUPANG",
+      "search_volume": 416652,
+      "blog_count": 967377,
+      "efficiency": 2.32,
       "golden_score": 40,
       "grade": "✨ SILVER",
       "related_keywords": []
@@ -126,29 +156,59 @@
     {
       "keyword": "캠핑의자",
       "source": "COUPANG",
-      "search_volume": 412402,
-      "blog_count": 1001291,
-      "efficiency": 2.43,
+      "search_volume": 427571,
+      "blog_count": 1001417,
+      "efficiency": 2.34,
       "golden_score": 40,
       "grade": "✨ SILVER",
       "related_keywords": []
     },
     {
+      "keyword": "침낭",
+      "source": "COUPANG",
+      "search_volume": 152824,
+      "blog_count": 368014,
+      "efficiency": 2.41,
+      "golden_score": 40,
+      "grade": "✨ SILVER",
+      "related_keywords": []
+    },
+    {
+      "keyword": "등산화",
+      "source": "COUPANG",
+      "search_volume": 346060,
+      "blog_count": 492329,
+      "efficiency": 1.42,
+      "golden_score": 40,
+      "grade": "✨ SILVER",
+      "related_keywords": []
+    },
+    {
+      "keyword": "플레이스테이션 5",
+      "source": "NAVER",
+      "search_volume": 78913,
+      "blog_count": 113078,
+      "efficiency": 1.43,
+      "golden_score": 35,
+      "grade": "Bad",
+      "related_keywords": []
+    },
+    {
       "keyword": "공기청정기",
       "source": "COUPANG",
-      "search_volume": 177234,
-      "blog_count": 1943667,
-      "efficiency": 10.97,
+      "search_volume": 435320,
+      "blog_count": 1944382,
+      "efficiency": 4.47,
       "golden_score": 20,
       "grade": "Bad",
       "related_keywords": []
     },
     {
-      "keyword": "믹서기",
+      "keyword": "전기포트",
       "source": "COUPANG",
-      "search_volume": 280904,
-      "blog_count": 967182,
-      "efficiency": 3.44,
+      "search_volume": 234954,
+      "blog_count": 745958,
+      "efficiency": 3.17,
       "golden_score": 20,
       "grade": "Bad",
       "related_keywords": []
@@ -156,90 +216,30 @@
     {
       "keyword": "텐트",
       "source": "COUPANG",
-      "search_volume": 495347,
-      "blog_count": 3455417,
-      "efficiency": 6.98,
+      "search_volume": 220267,
+      "blog_count": 3455773,
+      "efficiency": 15.69,
       "golden_score": 20,
-      "grade": "Bad",
-      "related_keywords": []
-    },
-    {
-      "keyword": "애플워치",
-      "source": "NAVER",
-      "search_volume": 68646,
-      "blog_count": 799380,
-      "efficiency": 11.64,
-      "golden_score": 15,
-      "grade": "Bad",
-      "related_keywords": []
-    },
-    {
-      "keyword": "전기포트",
-      "source": "COUPANG",
-      "search_volume": 69317,
-      "blog_count": 745626,
-      "efficiency": 10.76,
-      "golden_score": 15,
-      "grade": "Bad",
-      "related_keywords": []
-    },
-    {
-      "keyword": "에어프라이어",
-      "source": "COUPANG",
-      "search_volume": 70734,
-      "blog_count": 1372468,
-      "efficiency": 19.4,
-      "golden_score": 15,
-      "grade": "Bad",
-      "related_keywords": []
-    },
-    {
-      "keyword": "침낭",
-      "source": "COUPANG",
-      "search_volume": 76206,
-      "blog_count": 367956,
-      "efficiency": 4.83,
-      "golden_score": 15,
       "grade": "Bad",
       "related_keywords": []
     },
     {
       "keyword": "운동화",
       "source": "COUPANG",
-      "search_volume": 70580,
-      "blog_count": 3561060,
-      "efficiency": 50.45,
-      "golden_score": 15,
+      "search_volume": 374671,
+      "blog_count": 3561977,
+      "efficiency": 9.51,
+      "golden_score": 20,
       "grade": "Bad",
       "related_keywords": []
     },
     {
-      "keyword": "아이폰 16",
-      "source": "NAVER",
-      "search_volume": 49227,
-      "blog_count": 522625,
-      "efficiency": 10.62,
-      "golden_score": 10,
-      "grade": "Bad",
-      "related_keywords": []
-    },
-    {
-      "keyword": "플레이스테이션 5",
-      "source": "NAVER",
-      "search_volume": 28378,
-      "blog_count": 113051,
-      "efficiency": 3.98,
-      "golden_score": 10,
-      "grade": "Bad",
-      "related_keywords": []
-    },
-    {
-      "keyword": "등산화",
+      "keyword": "에어프라이어",
       "source": "COUPANG",
-      "search_volume": 22241,
-      "blog_count": 492194,
-      "efficiency": 22.13,
-      "golden_score": 10,
+      "search_volume": 78883,
+      "blog_count": 1372962,
+      "efficiency": 17.41,
+      "golden_score": 15,
       "grade": "Bad",
       "related_keywords": []
     }
